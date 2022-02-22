@@ -7,7 +7,7 @@ function Login() {
     <div className="bg-gray-800 flex justify-center lg:justify-center md:justify-start p-0 md:p-10 overflow-x-hidden">
       <form className="max-w-sm bg-white rounded-lg shadow-md py-10 px-8">
         <h1 className="text-2xl font-bold w-screen">Sign in</h1>
-        <p className="text-gray-400 text-xs mt-5">
+        <p className="text-gray-400 text-xs mt-5 text-primary">
           Login to manage your account
         </p>
         <label className="block text-grey-darker text-sm mb-1 mt-4">

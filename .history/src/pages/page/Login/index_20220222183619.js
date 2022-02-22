@@ -44,11 +44,11 @@ function Login() {
         </div>
         <div className="flex space-x-3 mt-10">
           <button className="flex item-center px-4 py-2 rounded font-bold w-full text-red-600 border border-red-600">
-            <img className="w-5 mr-4" src={iconGG} alt="icon-google" />
+            <img className="w-5 mr-4" src="{iconGG}" alt="icon-google" />
             Google
           </button>
           <button className="flex item-center px-4 py-2 rounded font-bold w-full text-blue-600 border border-blue-600">
-            <img className="w-7 mr-2" src={iconGithub} alt="icon-face" />
+            <img className="w-7 mr-2" src="{iconGithub}" alt="icon-face" />
             Github
           </button>
         </div>

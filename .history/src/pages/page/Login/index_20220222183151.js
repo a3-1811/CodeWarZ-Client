@@ -42,6 +42,7 @@ function Login() {
             Submit
           </button>
         </div>
+
         <div className="flex space-x-3 mt-10">
           <button className="flex item-center px-4 py-2 rounded font-bold w-full text-red-600 border border-red-600">
             <img className="w-5 mr-4" src={iconGG} alt="icon-google" />
