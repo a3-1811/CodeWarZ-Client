@@ -1,7 +1,5 @@
 import React from 'react';
 import thumnail from '../../../assets/undraw_programming_re_kg9v.svg';
-import iconGG from '../../../assets/icon-gg.png';
-import iconGithub from '../../../assets/icon-github.png';
 function Login() {
   return (
     <div className="bg-gray-800 flex justify-center lg:justify-center md:justify-start p-0 md:p-10 overflow-x-hidden">
@@ -28,15 +26,15 @@ function Login() {
             placeholder="Enter 6 character or more"
           />
         </label>
-        <div className="mb-4 mt-4">
-          <label className="block">
-            <input className="mr-2 leading-tight" type="checkbox" />
-            <span className="text-sm">Remember me</span>
+        <div class="mb-4 mt-4">
+          <label class="block">
+            <input class="mr-2 leading-tight" type="checkbox" />
+            <span class="text-sm">Remember me</span>
           </label>
         </div>
-        <div className="flex items-center justify-between mt-4">
+        <div class="flex items-center justify-between mt-4">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             type="button"
           >
             Submit
@@ -44,11 +42,19 @@ function Login() {
         </div>
         <div className="flex space-x-3 mt-10">
           <button className="flex item-center px-4 py-2 rounded font-bold w-full text-red-600 border border-red-600">
-            <img className="w-5 mr-4" src={iconGG} alt="icon-google" />
+            <img
+              className="w-5 mr-4"
+              src="../../../assets/icon-gg.png"
+              alt="icon-google"
+            />
             Google
           </button>
           <button className="flex item-center px-4 py-2 rounded font-bold w-full text-blue-600 border border-blue-600">
-            <img className="w-7 mr-2" src={iconGithub} alt="icon-face" />
+            <img
+              className="w-7 mr-2"
+              src="../../../assets/icon-github.png"
+              alt="icon-face"
+            />
             Github
           </button>
         </div>
@@ -58,7 +64,11 @@ function Login() {
         </p>
       </form>
       <section className="hidden md:block">
-        <img className="max-w-lg ml-20 mt-20" src={thumnail} alt="pannel" />
+        <img
+          className="max-w-lg ml-20 mt-20"
+          src="../../../assets/undraw_programming_re_kg9v.svg"
+          alt="pannel"
+        />
       </section>
     </div>
   );

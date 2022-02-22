@@ -28,15 +28,15 @@ function Login() {
             placeholder="Enter 6 character or more"
           />
         </label>
-        <div className="mb-4 mt-4">
-          <label className="block">
-            <input className="mr-2 leading-tight" type="checkbox" />
-            <span className="text-sm">Remember me</span>
+        <div class="mb-4 mt-4">
+          <label class="block">
+            <input class="mr-2 leading-tight" type="checkbox" />
+            <span class="text-sm">Remember me</span>
           </label>
         </div>
-        <div className="flex items-center justify-between mt-4">
+        <div class="flex items-center justify-between mt-4">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             type="button"
           >
             Submit
