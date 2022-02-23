@@ -5,6 +5,7 @@ import Profile from './pages/page/Profile';
 import { Navigate } from 'react-router-dom';
 import Page404 from './pages/page404';
 import ForgotPass from './pages/page/ForgotPass';
+import VerifyPassword from './pages/page/VerifyPassword';
 
 const routes = isLoggedIn => [
   {
@@ -26,6 +27,10 @@ const routes = isLoggedIn => [
   {
     path: '/forgot-password',
     element: !isLoggedIn ? <ForgotPass /> : <Navigate to="/" />,
+  },
+  {
+    path: '/verify/:token',
+    element: !isLoggedIn ? <VerifyPassword /> : <Navigate to="/" />,
   },
   {
     path: '*',
