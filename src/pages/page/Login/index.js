@@ -20,10 +20,10 @@ function Login() {
         <label className="block text-grey-darker text-sm mb-1 mt-3">
           <span className="block mb-1 text-white">Password</span>
           <input
-            type="email"
-            name="email"
+            type="password"
+            name="password"
             className="px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
-            placeholder="you@example.com"
+            placeholder="Enter your password"
           />
         </label>
         <div className="flex gap-20 mb-4 mt-4">
