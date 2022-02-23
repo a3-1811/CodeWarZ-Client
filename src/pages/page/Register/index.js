@@ -1,5 +1,6 @@
 import React from 'react';
 import thumbnail from '../../../assets/undraw_developer_activity_re_39tg.svg';
+import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 function Register() {
   return (
     <div className="bg-gray-800 flex justify-center lg:justify-center md:justify-start p-0 md:p-10 overflow-x-hidden max-h-screen">
@@ -28,7 +29,7 @@ function Register() {
             placeholder="you@example.com"
           />
         </label>
-        <label className="block text-grey-darker text-sm mb-1 mt-3">
+        <label className="relative block text-grey-darker text-sm mb-1 mt-3">
           <span className="block mb-1 text-white">Password</span>
           <input
             type="password"
@@ -36,6 +37,9 @@ function Register() {
             className="px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
             placeholder="Enter your password"
           />
+          <div className="icon_button absolute right-4 top-9">
+            <EyeIcon className="h-6 font-extralight" />
+          </div>
         </label>
         <div className="flexmb-4 mt-4">
           <label className="block">
