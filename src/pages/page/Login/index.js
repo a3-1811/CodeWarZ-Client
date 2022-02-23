@@ -38,15 +38,20 @@ function Login() {
           </label>
         </div>
         <div className="flex items-center justify-between mt-4">
-          <button
-            className="bg-primary text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-            type="button"
+          <a
+            href="#_"
+            class="w-full relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group"
           >
-            Sign in
-          </button>
+            <span class="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-400 ease-in-out bg-primary rounded-md group-hover:mt-0 group-hover:ml-0"></span>
+            <span class="absolute inset-0 w-full h-full bg-green rounded-md "></span>
+            <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-primary rounded-md opacity-0 group-hover:opacity-100 "></span>
+            <span class="relative text-white transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">
+              Sign in
+            </span>
+          </a>
         </div>
         <div className="flex gap-3 space-x-3 mt-9">
-          <button className="flex-1 px-3 py-3 text-xs text-gray-400 bg-white border-2 rounded-md shadow outline-none hover:bg-blue-50 hover:border-blue-400 focus:outline-none">
+          <button className="flex-1 px-3 py-3 text-xs text-black bg-white border-2 rounded-md shadow outline-none hover:bg-blue-50 hover:border-blue-400 focus:outline-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="inline w-4 h-4 mr-3 text-gray-900 fill-current"
@@ -73,7 +78,7 @@ function Login() {
             </svg>
             Sign in with Google
           </button>
-          <button className="px-3 py-3 flex-1 text-xs text-gray-400 bg-white border-2 rounded-md shadow outline-none hover:bg-blue-50 hover:border-blue-400 focus:outline-none">
+          <button className="px-3 py-3 flex-1 text-xs text-black bg-white border-2 rounded-md shadow outline-none hover:bg-blue-50 hover:border-blue-400 focus:outline-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
