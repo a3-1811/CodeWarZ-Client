@@ -41,6 +41,57 @@ function Main() {
           </li>
         </ul>
       </div>
+      <div className="fixed h-full w-16 overflow-hidden duration-1000 bg-gray-500 transition-width z-10 right-0 top-0 bg-opacity-20">
+        <ul className="flex flex-col items-center h-full w-full">
+          <li className="my-9">
+            <a href="!@" className="">
+              <i className="fa fa-cog text-white text-xl"></i>
+            </a>
+          </li>
+          <li className="">
+            <a href="!@" className="">
+              <i className="fa fa-user text-white text-xl"></i>
+            </a>
+          </li>
+          <span
+            className="block w-full mt-3 mb-3 bg-gray-500"
+            style={{ height: 1 }}
+          />
+          <li className="px-3 ">
+            <div className="flex flex-col justify-center items-center">
+              <div className="h-12 w-12">
+                <img
+                  src="https://images.unsplash.com/photo-1638913662252-70efce1e60a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+                  alt=""
+                  className="rounded-full object-cover w-full h-full"
+                />
+              </div>
+            </div>
+          </li>
+          <li className="px-3">
+            <div className="flex flex-col justify-center items-center">
+              <div className="flex flex-col justify-center items-center my-4 h-12 w-12">
+                <img
+                  src="https://images.unsplash.com/photo-1645632698932-463c91daea4a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+                  alt=""
+                  className="rounded-full object-cover w-full h-full"
+                />
+              </div>
+            </div>
+          </li>
+          <li className="px-3 ">
+            <div className="flex flex-col justify-center items-center">
+              <div className="h-12 w-12">
+                <img
+                  src="https://images.unsplash.com/photo-1645522165850-a8b468936735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+                  alt=""
+                  className="rounded-full object-cover w-full h-full"
+                />
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
