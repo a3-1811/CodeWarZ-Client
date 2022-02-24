@@ -14,6 +14,14 @@ module.exports = {
       letterSpacing: {
         '0.4r': '4px',
       },
+      transitionProperty: {
+        height: 'height',
+        width: 'width',
+        spacing: 'margin, padding',
+      },
+      boxShadow: {
+        circle: '0 0 10px 5px rgba(99, 183, 177,1)',
+      },
     },
   },
   plugins: [],
