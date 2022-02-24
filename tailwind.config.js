@@ -11,6 +11,9 @@ module.exports = {
       height: {
         '40r': '400px',
       },
+      letterSpacing: {
+        '0.4r': '4px',
+      },
     },
   },
   plugins: [],
