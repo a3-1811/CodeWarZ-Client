@@ -1,11 +1,15 @@
 import React from 'react';
 import thumnail from '../../../assets/undraw_programming_re_kg9v.svg';
+import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 function Login() {
   return (
-    <div className="bg-gray-800 flex justify-center lg:justify-center md:justify-start p-0 md:p-10 overflow-x-hidden max-h-screen">
-      <form className="max-w-md bg-white rounded-2xl shadow-md py-10 px-8 bg-opacity-20">
+    <div className="items-center bg-gray-800 flex justify-center lg:justify-center md:justify-start p-0 md:p-10 overflow-x-hidden max-h-screen h-screen">
+      <form
+        style={{ maxHeight: 700 }}
+        className="max-w-md bg-white rounded-2xl shadow-md py-10 px-8 bg-opacity-20"
+      >
         <h1 className="text-2xl font-bold w-screen text-white">Sign in</h1>
-        <p className="text-gray-400 text-xs mt-6">
+        <p className="text-gray-400 text-xs mt-2">
           Login to manage your account
         </p>
         <label className="block text-grey-darker text-sm mb-1 mt-3">
@@ -17,7 +21,7 @@ function Login() {
             placeholder="you@example.com"
           />
         </label>
-        <label className="block text-grey-darker text-sm mb-1 mt-3">
+        <label className="relative block text-grey-darker text-sm mb-1 mt-3">
           <span className="block mb-1 text-white">Password</span>
           <input
             type="password"
@@ -25,6 +29,9 @@ function Login() {
             className="px-3 py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-primary block w-full rounded-md sm:text-sm focus:ring-1"
             placeholder="Enter your password"
           />
+          <div className="icon_button absolute right-4 top-9">
+            <EyeIcon className="h-6 font-extralight" />
+          </div>
         </label>
         <div className="flex gap-20 mb-4 mt-4">
           <label className="block flex-1">
@@ -91,7 +98,7 @@ function Login() {
             Sign in with GitHub
           </button>
         </div>
-        <p className="text-gray-400 text-sm text-center mt-8">
+        <p className="text-gray-400 text-sm text-center mt-7">
           Don't have an account?
           <a className="text-primary text-base font-bold ml-1" href="!#">
             Sign Up
