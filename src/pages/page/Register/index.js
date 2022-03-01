@@ -3,12 +3,15 @@ import thumbnail from '../../../assets/undraw_developer_activity_re_39tg.svg';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 function Register() {
   return (
-    <div className="bg-gray-800 flex justify-center lg:justify-center md:justify-start p-0 md:p-10 overflow-x-hidden max-h-screen">
-      <form className="max-w-md bg-white rounded-2xl shadow-md py-10 px-8 bg-opacity-20">
+    <div className="items-center bg-gray-800 flex justify-center lg:justify-center md:justify-start p-0 md:p-10 overflow-x-hidden max-h-screen h-screen">
+      <form
+        className="max-w-md bg-white rounded-2xl shadow-md py-10 px-8 bg-opacity-20"
+        style={{ maxHeight: 700 }}
+      >
         <h1 className="text-2xl font-bold w-screen text-white">
           Create your account
         </h1>
-        <p className="text-gray-400 text-xs mt-6">
+        <p className="text-gray-400 text-xs mt-3">
           Created for developers by developers
         </p>
         <label className="block text-grey-darker text-sm mb-1 mt-3">
@@ -62,7 +65,7 @@ function Register() {
             </span>
           </a>
         </div>
-        <p className="text-gray-400 text-sm text-center mt-8">
+        <p className="text-gray-400 text-sm text-center mt-6">
           Already have an account?
           <a className="text-primary text-base font-bold ml-1" href="!#">
             Sign In
