@@ -11,7 +11,7 @@ import Contact from './pages/page/Contact';
 const routes = isLoggedIn => [
   {
     path: '/',
-    element: isLoggedIn ? <Main /> : <Navigate to="/login" />,
+    element: !isLoggedIn ? <Main /> : <Navigate to="/login" />,
   },
   {
     path: '/profile',
