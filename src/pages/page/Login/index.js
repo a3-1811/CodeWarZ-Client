@@ -3,7 +3,7 @@ import thumnail from '../../../assets/undraw_programming_re_kg9v.svg';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 function Login() {
   return (
-    <div className="items-center bg-gray-800 flex justify-center lg:justify-center md:justify-start p-0 md:p-10 overflow-x-hidden max-h-screen h-screen">
+    <div className="items-center bg-gray-800 flex justify-center p-0 md:p-10  overflow-x-hidden max-h-screen h-screen">
       <form
         style={{ maxHeight: 700 }}
         className="max-w-md bg-white rounded-2xl shadow-md py-10 px-8 bg-opacity-20"
@@ -105,7 +105,7 @@ function Login() {
           </a>
         </p>
       </form>
-      <section className="hidden md:block">
+      <section className="block lg:hidden">
         <img className="max-w-lg ml-24 mt-20" src={thumnail} alt="pannel" />
       </section>
     </div>

@@ -3,7 +3,7 @@ import thumbnail from '../../../assets/undraw_developer_activity_re_39tg.svg';
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid';
 function Register() {
   return (
-    <div className="items-center bg-gray-800 flex justify-center lg:justify-center md:justify-start p-0 md:p-10 overflow-x-hidden max-h-screen h-screen">
+    <div className="items-center bg-gray-800 flex justify-center  p-0 md:p-10 overflow-x-hidden max-h-screen h-screen">
       <form
         className="max-w-md bg-white rounded-2xl shadow-md py-10 px-8 bg-opacity-20"
         style={{ maxHeight: 700 }}
@@ -72,7 +72,7 @@ function Register() {
           </a>
         </p>
       </form>
-      <section className="hidden md:block">
+      <section className="block md:hidden">
         <img className="max-w-lg ml-24 mt-20" src={thumbnail} alt="pannel" />
       </section>
     </div>
