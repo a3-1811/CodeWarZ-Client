@@ -2,45 +2,57 @@ import Login from './pages/page/Login';
 import Register from './pages/page/Register';
 import Main from './pages/page/Main';
 import Profile from './pages/page/Profile';
-import { Navigate } from 'react-router-dom';
 import Page404 from './pages/page404';
 import ForgotPass from './pages/page/ForgotPass';
 import VerifyPassword from './pages/page/VerifyPassword';
 import Contact from './pages/page/Contact';
+//Home Teamplate 
+import HomeTeamplate from "./templates/HomeTeamplate.js";
 
-const routes = isLoggedIn => [
+const routes = () => [
   {
     path: '/',
-    element: !isLoggedIn ? <Main /> : <Navigate to="/login" />,
+    element: <ProtectedRoute><Main /></ProtectedRoute>,
   },
   {
     path: '/profile',
-    element: isLoggedIn ? <Profile /> : <Navigate to="/login" />,
+    element: <ProtectedRoute><Profile /></ProtectedRoute>,
   },
   {
     path: '/login',
-    element: !isLoggedIn ? <Login /> : <Navigate to="/" />,
+    element: <Login />,
   },
   {
     path: '/register',
-    element: !isLoggedIn ? <Register /> : <Navigate to="/" />,
+    element: <Register />,
   },
   {
     path: '/forgot-password',
-    element: !isLoggedIn ? <ForgotPass /> : <Navigate to="/" />,
+    element: <ForgotPass />,
   },
   {
     path: '/contact',
-    element: !isLoggedIn ? <Contact /> : <Navigate to="/" />,
+    element: <Contact />,
   },
   {
     path: '/verify/:token',
-    element: !isLoggedIn ? <VerifyPassword /> : <Navigate to="/" />,
+    element: <VerifyPassword />
   },
   {
     path: '*',
     element: <Page404 />,
   },
 ];
+
+const ProtectedRoute = (
+  {redirectPath = '/login',
+  children}
+) => {
+    return (
+      <HomeTeamplate>
+        {children}
+      </HomeTeamplate>
+    )
+};
 
 export default routes;

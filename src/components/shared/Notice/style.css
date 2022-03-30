@@ -1,0 +1,10 @@
+.notice{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+.notice__content{
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-20%);
+}
