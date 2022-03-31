@@ -24,6 +24,10 @@ const UserApi = {
         const url =baseUri + '/resetPassword'
         return axiosClient.post(url, params)
     },
+    confirmPassword(params){
+        const url =baseUri + '/confirmNewPassword'
+        return axiosClient.post(url, params)
+    },
     getProfile(params){
         const url =baseUri + '/me'
         return axiosClient.get(url,params)

@@ -8,9 +8,9 @@ function Notice(props) {
     }
       return (<>
         <div className={ `${status ? "block" : "hidden"} notice overflow-y-auto overflow-x-hidden  z-50 md:h-modal`}>
-        <div className="notice__content relative p-4 w-full max-w-md md:h-full h-auto">
+        <div className="notice__content relative p-4 w-full max-w-md md:h-full h-auto ">
           {/* Modal content */}
-          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 border-primary border-2">
             {/* Modal header */}
             <div className="flex justify-end p-2">
               <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" onClick={handleClose}>
