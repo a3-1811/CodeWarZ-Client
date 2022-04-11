@@ -8,6 +8,11 @@ import VerifyPassword from './pages/page/VerifyPassword';
 import Contact from './pages/page/Contact';
 //Home Teamplate 
 import HomeTeamplate from "./templates/HomeTeamplate.js";
+import LanguageBegin from './pages/page/Home/LanguageBegin';
+import Chapter from './pages/page/Home/Chapter';
+import CodePlayground from './pages/page/Home/CodePlayground';
+import CodeTeamplate from './templates/CodeTeamplate';
+
 
 const routes = () => [
   {
@@ -15,8 +20,20 @@ const routes = () => [
     element: <ProtectedRoute><Main /></ProtectedRoute>,
   },
   {
+    path: '/chooseLanguages',
+    element: <ProtectedRoute><LanguageBegin /></ProtectedRoute>,
+  },
+  {
     path: '/profile',
     element: <ProtectedRoute><Profile /></ProtectedRoute>,
+  },
+  {
+    path: '/chapter/:id',
+    element: <ProtectedRoute ><Chapter /></ProtectedRoute>,
+  },
+  {
+    path: '/code/:id',
+    element: <CodeRoute ><CodePlayground /></CodeRoute>,
   },
   {
     path: '/login',
@@ -54,5 +71,17 @@ const ProtectedRoute = (
       </HomeTeamplate>
     )
 };
+
+const CodeRoute = (
+  {redirectPath = '/login',
+  children}
+) => {
+    return (
+      <CodeTeamplate>
+        {children}
+      </CodeTeamplate>
+    )
+};
+
 
 export default routes;

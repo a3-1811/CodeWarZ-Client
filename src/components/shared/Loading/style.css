@@ -1,4 +1,4 @@
-.container {
+.container-loading {
   position: relative;
   width: 100%;
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
 }
 /* Line */
-.container .ring {
+.container-loading .ring {
   position: relative;
   width: 150px;
   height: 150px;
@@ -16,7 +16,7 @@
   border-top: 4px solid #1d90f4;
 }
 /* Head of line */
-.container .ring::before {
+.container-loading .ring::before {
   content: '';
   position: absolute;
   top: 12px;
@@ -29,19 +29,19 @@
     0 0 40px #24ecff, 0 0 50px #24ecff;
 }
 /* Circle Position & Animation */
-.container .ring:nth-child(1) {
+.container-loading .ring:nth-child(1) {
   animation: circle2 2s linear infinite;
 }
-.container .ring:nth-child(2) {
+.container-loading .ring:nth-child(2) {
   animation: circle1 2s linear infinite;
 }
-.container .ring:nth-child(3) {
+.container-loading .ring:nth-child(3) {
   position: absolute;
   top: -66.66px;
   animation: circle 2s linear infinite;
 }
 /* Loading Text */
-.container p {
+.container-loading p {
   overflow: hidden;
   position: absolute;
   color: #fff;

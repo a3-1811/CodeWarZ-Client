@@ -8,6 +8,8 @@ import useStore from "../store/useStore";
 function Main({ children }) {
   const updateInfo = useStore((state) => state.updateInfo);
   const user = useStore((state) => state.user);
+const fetchMyChapters = useStore((state) => state.fetchMyChapters);
+
 
   const history = useNavigate();
   useEffect(() => {
@@ -16,13 +18,23 @@ function Main({ children }) {
         let checkAuth = await UserApi.checkAuthen();
         localStorage.setItem("acc", JSON.stringify(checkAuth.user));
         updateInfo(checkAuth.user);
+        fetchMyChapters()
+        if (checkAuth.user.programing_languages.length === 0) {
+          history("/chooseLanguages");
+        }
       } catch (error) {
         localStorage.removeItem("acc");
         localStorage.removeItem("tokenAuth");
         history("/login");
       }
     })();
-  }, [history, updateInfo]);
+  }, [history, updateInfo,fetchMyChapters]);
+  const handleLogout = async () => {
+    await UserApi.logout();
+    localStorage.removeItem("acc");
+    localStorage.removeItem("tokenAuth");
+    history("/login");
+  };
   return (
     <div className="main w-full h-screen max-h-screen md:p-1">
       {/* Sidebar left */}
@@ -32,9 +44,9 @@ function Main({ children }) {
           style={{ height: "90%" }}
         >
           <li className="my-3 text-center">
-            <a href="!@" className="active">
+            <Link to="/" className="active">
               <i className="fa fa-code text-gray-500 text-xl p-2"></i>
-            </a>
+            </Link>
           </li>
           <li className="my-3 text-center">
             <a href="!@">
@@ -57,9 +69,9 @@ function Main({ children }) {
             </a>
           </li>
           <li className="mt-auto text-center">
-            <a href="!@">
+            <button onClick={handleLogout}>
               <i className="fa fa-sign-out-alt text-gray-500 text-xl p-2 "></i>
-            </a>
+            </button>
           </li>
         </ul>
       </div>
@@ -118,7 +130,7 @@ function Main({ children }) {
             </button>
             {/* Dropdown on user image click */}
             <div
-              className=" hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+              className="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
               id="dropdownProfile"
             >
               <div className="py-3 px-4">
@@ -147,12 +159,12 @@ function Main({ children }) {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#!"
+                  <button
+                    onClick={handleLogout}
                     className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     Logout
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -229,10 +241,10 @@ function Main({ children }) {
                   </a>
                 </li>
                 <li className="text-center w-full hover:text-primary hover:duration-150">
-                  <a href="!@">
+                  <button onClick={handleLogout}>
                     <i className="fa fa-sign-out-alt text-gray-500 text-xl p-2"></i>
                     Logout
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -286,7 +298,6 @@ function Main({ children }) {
           </li>
         </ul>
       </div>
-
       {/* Content redering */}
       <div className="md:p-5 main__content px-20 w-full h-full">{children}</div>
     </div>

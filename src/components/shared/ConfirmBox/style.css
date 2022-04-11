@@ -1,0 +1,10 @@
+.confirm{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+.confirm__content{
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-20%);
+}
