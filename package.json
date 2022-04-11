@@ -20,7 +20,10 @@
     "react-query": "^3.34.15",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-slick": "^0.28.1",
+    "react-tabs": "^4.2.0",
     "react-use-googlelogin": "^0.12.5",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11",
     "zustand": "^3.7.0"

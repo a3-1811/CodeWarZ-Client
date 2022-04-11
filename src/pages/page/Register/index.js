@@ -167,12 +167,12 @@ function Register() {
         <div className="flex items-center justify-between mt-4">
           <button
             type="submit"
-            class="w-full relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group"
+            className="w-full relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group"
           >
-            <span class="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-400 ease-in-out bg-primary rounded-md group-hover:mt-0 group-hover:ml-0"></span>
-            <span class="absolute inset-0 w-full h-full bg-green rounded-md "></span>
-            <span class="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-primary rounded-md opacity-0 group-hover:opacity-100 "></span>
-            <span class="relative text-white transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">
+            <span className="absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-400 ease-in-out bg-primary rounded-md group-hover:mt-0 group-hover:ml-0"></span>
+            <span className="absolute inset-0 w-full h-full bg-green rounded-md "></span>
+            <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-primary rounded-md opacity-0 group-hover:opacity-100 "></span>
+            <span className="relative text-white transition-colors duration-200 ease-in-out delay-100 group-hover:text-white">
               Create my account
             </span>
           </button>

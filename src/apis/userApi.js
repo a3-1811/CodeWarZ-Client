@@ -32,6 +32,11 @@ const UserApi = {
         const url =baseUri + '/me'
         return axiosClient.get(url,params)
     },
+    getMyChapters(params){
+        const url =baseUri + '/myChapters'
+        return axiosClient.get(url,params)
+    },
+    
     getListUser(params){
         const url =baseUri
         return axiosClient.get(url,params)
@@ -51,6 +56,14 @@ const UserApi = {
     updateProfile(params){
         const url =baseUri+'/me'
         return axiosClient.patch(url,{...params})
+    },
+    unlockChapter(chapterID,params){
+        const url =baseUri+'/unlock-chapter/'+chapterID
+        return axiosClient.post(url,params)
+    },
+    generateChapters(params){
+        const url =baseUri+'/generateChapters/'
+        return axiosClient.post(url,params)
     },
     updateAvatar(mutilpart){
         const url =baseUri+'/me/avatar'
