@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Controlled as CodeMirror } from "react-codemirror2";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import ChanllengeApi from "../../../../apis/chanllengeApi";
 import CodeApi from "../../../../apis/codeApi";
 import "./style.css";
 import Loading from "../../../../components/shared/Loading/Loading";
+import SubmitResult from "./SubmitResult";
 
 require("codemirror/mode/xml/xml");
 require("codemirror/mode/javascript/javascript");
@@ -18,6 +19,11 @@ function CodePlayground(props) {
   const [lang, setLang] = useState("javascript");
   const [error, setError] = useState(false);
   const [result, setResult] = useState("");
+  const [submit, setSubmit] = useState({
+    show: false,
+    result: null,
+  });
+  const history = useNavigate();
 
   useEffect(() => {
     ChanllengeApi.getCodeMyChallenges(id)
@@ -82,9 +88,9 @@ function CodePlayground(props) {
           setResult(error.message);
         } else {
           // render message complier
-          let mess = res.result.map((testcase,index) => {
-            return ( 
-              <div key={`${index}-${index*index}`}>
+          let mess = res.result.map((testcase, index) => {
+            return (
+              <div key={`${index}-${index * index}`}>
                 {testcase.message
                   .trim()
                   .split("\n")
@@ -94,10 +100,25 @@ function CodePlayground(props) {
               </div>
             );
           });
-          mess.push(<div key="timeStampExcute">Time execute: {res.timeExcute} ms</div>);
-          let template = [<div key="tempalteResult" className="flex gap-5 flex-1">{mess}</div>];
+          let success = res.result.every((testcase) => testcase.match);
+          mess.push(
+            <div key="timeStampExcute">Time execute: {res.timeExcute} ms</div>
+          );
+          let template = [
+            <div key="templateResult" className="flex gap-5 flex-1">
+              {mess}
+            </div>,
+          ];
           setResult(template);
           setError(false);
+          if (success) {
+            setSubmit({
+              show: true,
+              result: res.result,
+              timeExcute: res.timeExcute,
+              chanllengeId: chanllenge._id,
+            });
+          }
         }
       })
       .catch((err) => console.log({ err }));
@@ -119,7 +140,6 @@ function CodePlayground(props) {
     let newCode = typeof temp === "string" ? temp : temp;
     setCode(newCode);
   };
-
   return (
     <div className="codePlayground h-full w-full flex">
       {/* Hint, desciptions, Name of problems  */}
@@ -151,11 +171,15 @@ function CodePlayground(props) {
                       <div className="example-content bg-gray-100 p-2 rounded-sm">
                         <p>
                           <span className="font-bold">Input:</span>{" "}
-                          {JSON.stringify(testcase.input)}
+                          {testcase.input.map((item) => (
+                            <span key={item.length}>
+                              {JSON.stringify(item)}
+                            </span>
+                          ))}
                         </p>
                         <p>
                           <span className="font-bold">Ouput:</span>{" "}
-                          {testcase.output.toString()}
+                          {JSON.stringify(testcase.output)}
                         </p>
                       </div>
                     </div>
@@ -164,68 +188,107 @@ function CodePlayground(props) {
               </div>
             </TabPanel>
             <TabPanel>
-              <h2>Any content 2</h2>
+              <div className="comments">
+                {chanllenge.comments.map((comment) => {
+                  return (
+                    <div className="comment text-sm border-primary border-b-4 p-2" key={comment._id}>
+                      <div className="avatarBox rounded-full object-cover h-10 w-10 border-primary border-2">
+                        <img
+                        className="rounded-full"
+                          src={comment.userId.avatar}
+                          alt={comment.userId.fullName}
+                        />
+                      </div>
+                      <div className="content">
+                        <h4>{comment.content}</h4>
+                        <p>
+                          {comment.userId.fullName} -{" "}
+                          {
+                            comment.userId.medals[
+                              comment.userId.medals.length - 1
+                            ].name
+                          }
+                        </p>
+                      </div>
+                      <span>
+                        Created at:{" "}
+                        {new Date(comment.time).toLocaleString("vi-VN", {
+                          timeZone: "Asia/Ho_Chi_Minh",
+                        })}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </TabPanel>
           </Tabs>
         )}
       </div>
-      <div className="basis-2/3 flex-shrink h-screen flex flex-col relative">
-        <div className="language absolute top-0 right-0 z-50">
-          <div className="flex justify-center">
-            <div className="xl:w-96">
-              <select
-                className="form-select appearance-none
-                    block
-                    w-32
-                    px-3
-                    py-1.5
-                    cursor-pointer
-                    font-bold
-                    text-primary
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                aria-label="Default select example"
-                onChange={handleOnChangeLang}
-              >
-                {chanllenge &&
-                  chanllenge.defaultCode.map((lang) => (
-                    <option className="cursor-pointer" key={lang.lang._id} value={lang.lang.name}>
-                      {lang.lang.name}
-                    </option>
-                  ))}
-              </select>
+      {submit.show ? (
+        <SubmitResult submit={submit} />
+      ) : (
+        <div className="basis-2/3 flex-shrink h-screen flex flex-col relative">
+          <div className="language absolute top-0 right-0 z-50">
+            <div className="flex justify-center">
+              <div className="xl:w-96">
+                <select
+                  className="form-select appearance-none
+                  block
+                  w-32
+                  px-3
+                  py-1.5
+                  cursor-pointer
+                  font-bold
+                  text-primary
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  aria-label="Default select example"
+                  onChange={handleOnChangeLang}
+                >
+                  {chanllenge &&
+                    chanllenge.defaultCode.map((lang) => (
+                      <option
+                        className="cursor-pointer"
+                        key={lang.lang._id}
+                        value={lang.lang.name}
+                      >
+                        {lang.lang.name}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            </div>
+          </div>
+          <CodeMirror
+            className="text-sm flex-1 h-full"
+            value={code}
+            onBeforeChange={(editor, data, value) => {
+              setCode(value);
+            }}
+            options={{
+              mode: lang,
+              theme: "material",
+              lineNumbers: true,
+              extraKeys: {
+                "Ctrl-S": handleSave,
+              },
+            }}
+          />
+          <div className="bottom">
+            <div className={`result ${error ? "error" : ""}`}>{result}</div>
+            <div className="control">
+              <button className="btn btn-run" onClick={excute}>
+                Run
+              </button>
+              <button className="btn btn-submit" onClick={handleSubmit}>
+                Submit
+              </button>
             </div>
           </div>
         </div>
-        <CodeMirror
-          className="text-sm flex-1 h-full"
-          value={code}
-          onBeforeChange={(editor, data, value) => {
-            setCode(value);
-          }}
-          options={{
-            mode: lang,
-            theme: "material",
-            lineNumbers: true,
-            extraKeys: {
-              "Ctrl-S": handleSave,
-            },
-          }}
-        />
-        <div className="bottom">
-          <div className={`result ${error ? "error" : ""}`}>{result}</div>
-          <div className="control">
-            <button className="btn btn-run" onClick={excute}>
-              Run
-            </button>
-            <button className="btn btn-submit" onClick={handleSubmit}>
-              Submit
-            </button>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
