@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/solid";
 import UserApi from "../../../apis/userApi";
 import { useNavigate } from "react-router-dom";
@@ -6,8 +6,10 @@ import ConfirmBox from "../../../components/shared/ConfirmBox";
 import Notice from "../../../components/shared/Notice";
 import useStore from "../../../store/useStore";
 
+
 function Main() {
 const history=  useNavigate()
+// const me = useStore((state) => state.user)
 // Zutands Store
 const updateChapter = useStore((state) => state.updateChapter);
 const chapters = useStore((state) => state.chapters);
@@ -71,7 +73,7 @@ const [dialog, setDialog] = useState({
 
   return (
     <>
-        <h2 className="title text-center font-bold text-white text-2xl">Chapters list</h2>
+        <h2 className="title text-center font-bold text-white text-2xl alo">Chapters list</h2>
     <div className="chanllenges md:overflow-scroll md:h-full md:flex-wrap gap-x-5 flex justify-center items-center w-full">
       {chapters && chapters.map((chapter, index)=>{
         return (<div className={`chanllenge__item flex-1 md:basis-1/3 ${chapter.unlocked ? "" : "lock"}`} key={index} onClick={()=>{

@@ -32,6 +32,10 @@ const UserApi = {
         const url =baseUri + '/me'
         return axiosClient.get(url,params)
     },
+    getMyRecord(params){
+        const url =baseUri + '/my-record'
+        return axiosClient.get(url,params)
+    },
     getMyChapters(params){
         const url =baseUri + '/myChapters'
         return axiosClient.get(url,params)
@@ -53,6 +57,18 @@ const UserApi = {
         const url =baseUri+'/me'
         return axiosClient.get(url,params)
     },
+    inviteFriends(params){
+        const url =baseUri+'/invite-friends'
+        return axiosClient.post(url,params)
+    },
+    ranking(params){
+        const url =baseUri+'/ranking'
+        return axiosClient.get(url,params)
+    },
+    acceptInvite(params){
+        const url =baseUri+'/accept-invite'
+        return axiosClient.post(url,params)
+    },
     updateProfile(params){
         const url =baseUri+'/me'
         return axiosClient.patch(url,{...params})
@@ -68,7 +84,7 @@ const UserApi = {
     updateAvatar(mutilpart){
         const url =baseUri+'/me/avatar'
         let token = localStorage.getItem('tokenAuth')
-        return Axios.post(`${process.env.REACT_APP_API_URI}${url}`,mutilpart,{
+        return Axios.post(`${process.env.REACT_APP_API_URL}${url}`,mutilpart,{
             headers:{
                 "Authorization" : `Bearer ${token}`
             },

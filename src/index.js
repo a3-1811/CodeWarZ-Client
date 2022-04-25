@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import "./custom.css";
 import 'flowbite';
+import "./sass/main.scss"
 
 ReactDOM.render(
   <Router>

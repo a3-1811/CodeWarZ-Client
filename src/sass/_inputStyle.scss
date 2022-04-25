@@ -1,0 +1,50 @@
+.inputGroup{
+    width: 100%;
+    position: relative;
+    margin-bottom: 1.5rem;
+    color: #969696;
+    .dateLabel{
+        color: $primary-color;
+    }
+    .input-icon{
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        transform: translate(-90%,-50%);
+        color: #969696;
+        transition: all 0.35s ease-in-out;
+       pointer-events: none;
+       height: 25px;
+       width: 25px;
+    }
+    input,textarea,select{
+        background: transparent;
+        border: 0;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        max-width: 500px;
+        width: 100%;
+        &:focus, &:valid{
+            border: 1px solid $primary-color;
+            + label.input-icon{
+                padding: 0 0.3rem;
+                background: #fff;
+                border-radius: 50%;
+                text-align: center;
+                top: 0;
+                left: 10%;
+                i{
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+    textarea{
+        resize: none;
+        height: 100px;
+    }
+    .message{
+        color: red;
+        font-size: 0.7rem;
+    }
+}
