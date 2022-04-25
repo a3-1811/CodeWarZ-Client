@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import UserApi from "../apis/userApi";
 import { Link } from "react-router-dom";
 // Zutand store
@@ -10,7 +10,6 @@ function Main({ children }) {
   const user = useStore((state) => state.user);
 const fetchMyChapters = useStore((state) => state.fetchMyChapters);
 
-
   const history = useNavigate();
   useEffect(() => {
     (async () => {
@@ -18,7 +17,7 @@ const fetchMyChapters = useStore((state) => state.fetchMyChapters);
         let checkAuth = await UserApi.checkAuthen();
         localStorage.setItem("acc", JSON.stringify(checkAuth.user));
         updateInfo(checkAuth.user);
-        fetchMyChapters()
+        await fetchMyChapters()
         if (checkAuth.user.programing_languages.length === 0) {
           history("/chooseLanguages");
         }
@@ -44,29 +43,34 @@ const fetchMyChapters = useStore((state) => state.fetchMyChapters);
           style={{ height: "90%" }}
         >
           <li className="my-3 text-center">
-            <Link to="/" className="active">
+            <NavLink to="/"   activeclassname="active">
               <i className="fa fa-code text-gray-500 text-xl p-2"></i>
-            </Link>
+            </NavLink>
           </li>
           <li className="my-3 text-center">
-            <a href="!@">
-              <i className="fab fa-facebook-messenger text-gray-500 text-xl p-2 "></i>
-            </a>
+            <NavLink to="/battle" activeclassname="active">
+              <i className="fab fa-galactic-senate text-gray-500 text-xl p-2 "></i>
+            </NavLink>
           </li>
           <li className="my-3 text-center">
-            <a href="!@">
-              <i className="fa fa-user-friends text-gray-500 text-xl p-2 "></i>
-            </a>
-          </li>
-          <li className="my-3 text-center">
-            <a href="!@">
+            <NavLink to="/notices" activeclassname="active">
               <i className="fa fa-bell text-gray-500 text-xl p-2 "></i>
-            </a>
+            </NavLink>
           </li>
           <li className="my-3 text-center">
-            <a href="!@">
+            <NavLink to="/converstation" activeclassname="active">
+              <i className="fab fa-facebook-messenger text-gray-500 text-xl p-2 "></i>
+            </NavLink>
+          </li>
+          <li className="my-3 text-center">
+            <NavLink to="/friends" activeclassname="active">
+              <i className="fa fa-user-friends text-gray-500 text-xl p-2 "></i>
+            </NavLink>
+          </li>
+          <li className="my-3 text-center">
+            <NavLink to="/rank" activeclassname="active">
               <i className="fa fa-trophy text-gray-500 text-xl p-2 "></i>
-            </a>
+            </NavLink>
           </li>
           <li className="mt-auto text-center">
             <button onClick={handleLogout}>
@@ -100,13 +104,13 @@ const fetchMyChapters = useStore((state) => state.fetchMyChapters);
                 <span href="#!" className="block text-white text-sm font-bold">
                   {user.point_stars} STAR
                 </span>
-                <a
-                  href="!#"
+                <NavLink
+                 to="/stars"
                   className=" ml-2 bg-gray-700 rounded-md text-gray-50 font-bold text-sm block text-center "
                   style={{ width: 20, height: 20, lineHeight: "20px" }}
                 >
                   +
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -143,25 +147,25 @@ const fetchMyChapters = useStore((state) => state.fetchMyChapters);
               </div>
               <ul className="py-1" aria-labelledby="profileSetting">
                 <li>
-                  <a
-                    href="#!"
+                  <NavLink 
+                    to="/me"
                     className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     Your profile
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
-                  <a
-                    href="#!"
+                  <NavLink 
+                    to="/stars"
                     className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     Buy Star
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
-                  <button
+                  <button 
                     onClick={handleLogout}
-                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    className="block py-2 w-full hover:bg-red-600 hover:text-white px-4 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     Logout
                   </button>
@@ -204,41 +208,48 @@ const fetchMyChapters = useStore((state) => state.fetchMyChapters);
             </button>
             <div
               id="mobile-menu"
-              className="hidden fixed ml-4  duration-1000 bg-gray-500 transition-width z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-10 rounded-xl bg-opacity-40"
+              className="hidden fixed text-white ml-4  w-1/2  duration-1000 bg-black transition-width z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-10 rounded-xl bg-opacity-90"
             >
               <ul
                 className="flex flex-col items-center w-full"
                 style={{ height: "90%" }}
               >
                 <li className="my-3 text-center w-full hover:text-primary hover:duration-150">
-                  <a href="!@" className="active">
+                  <NavLink to="/" activeclassname="active">
                     <i className="fa fa-code text-gray-500 text-xl p-2"></i>
                     Chanllenge
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="my-3 text-center w-full hover:text-primary hover:duration-150">
-                  <a href="!@">
-                    <i className="fab fa-facebook-messenger text-gray-500 text-xl p-2"></i>
-                    Message
-                  </a>
+                  <NavLink to="/battle" activeclassname="active">
+                    <i className="fab fa-galactic-senate text-gray-500 text-xl p-2"></i>
+                    Battle
+                  </NavLink>
                 </li>
                 <li className="my-3 text-center w-full hover:text-primary hover:duration-150">
-                  <a href="!@">
-                    <i className="fa fa-user-friends text-gray-500 text-xl p-2"></i>
-                    Friends
-                  </a>
-                </li>
-                <li className="my-3 text-center w-full hover:text-primary hover:duration-150">
-                  <a href="!@">
+                  <NavLink to="/notices" activeclassname="active">
                     <i className="fa fa-bell text-gray-500 text-xl p-2"></i>
                     Notices
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="my-3 text-center w-full hover:text-primary hover:duration-150">
-                  <a href="!@">
+                  <NavLink to="/converstation" activeclassname="active">
+                    <i className="fab fa-facebook-messenger text-gray-500 text-xl p-2"></i>
+                    Message
+                  </NavLink>
+                </li>
+                <li className="my-3 text-center w-full hover:text-primary hover:duration-150">
+                  <NavLink activeclassname="active" to="/friends">
+                    <i className="fa fa-user-friends text-gray-500 text-xl p-2"></i>
+                    Friends
+                  </NavLink>
+                </li>
+
+                <li className="my-3 text-center w-full hover:text-primary hover:duration-150">
+                  <NavLink to="/rank" activeclassname="active">
                     <i className="fa fa-trophy text-gray-500 text-xl p-2"></i>
                     Rank
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="text-center w-full hover:text-primary hover:duration-150">
                   <button onClick={handleLogout}>
@@ -255,9 +266,9 @@ const fetchMyChapters = useStore((state) => state.fetchMyChapters);
       <div className="md:hidden sidebar__right fixed h-full mr-4 overflow-hidden duration-1000 bg-gray-500 transition-width right-0 top-16 rounded-xl bg-opacity-20 z-10">
         <ul className="flex flex-col items-center h-full w-full">
           <li className="my-3">
-            <a href="!@" className="">
+            <Link to="/me" className="">
               <i className="fa fa-user text-white text-lg"></i>
-            </a>
+            </Link>
           </li>
           <span
             className="block w-full mt-0 mb-3 bg-gray-500"
@@ -299,7 +310,7 @@ const fetchMyChapters = useStore((state) => state.fetchMyChapters);
         </ul>
       </div>
       {/* Content redering */}
-      <div className="md:p-5 main__content px-20 w-full h-full">{children}</div>
+      <div className="md:p-5 main__content px-20 w-full">{children}</div>
     </div>
   );
 }

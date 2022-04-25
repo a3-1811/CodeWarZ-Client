@@ -7,7 +7,7 @@ function Notice(props) {
       handleNotice(false);
     }
       return (<>
-        <div className={ `${status ? "block" : "hidden"} notice overflow-y-auto overflow-x-hidden  z-50 md:h-modal`}>
+        <div className={ `${status ? "block" : "hidden"} notice overflow-y-auto overflow-x-hidden z-index-9999 md:h-modal`}>
         <div className="notice__content relative p-4 w-full max-w-md md:h-full h-auto ">
           {/* Modal content */}
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 border-primary border-2">

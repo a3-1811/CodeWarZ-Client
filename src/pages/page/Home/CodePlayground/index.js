@@ -9,8 +9,11 @@ import Loading from "../../../../components/shared/Loading/Loading";
 import SubmitResult from "./SubmitResult";
 
 require("codemirror/mode/xml/xml");
+require('codemirror/theme/dracula.css');
 require("codemirror/mode/javascript/javascript");
 require("codemirror/mode/python/python");
+
+const avatarNullUrl = "https://res.cloudinary.com/samageapi/image/upload/v1634518566/mi7n5gfku2zay3spqetz.png"
 
 function CodePlayground(props) {
   const { id } = useParams();
@@ -28,6 +31,7 @@ function CodePlayground(props) {
   useEffect(() => {
     ChanllengeApi.getCodeMyChallenges(id)
       .then((res) => {
+        console.log(res.myChanllenges)
         let { code } = res.myChanllenges.chanllenge.defaultCode[0];
         let temp;
         if (res.myChanllenges.code[0]) {
@@ -178,7 +182,7 @@ function CodePlayground(props) {
                           ))}
                         </p>
                         <p>
-                          <span className="font-bold">Ouput:</span>{" "}
+                          <span className="font-bold">Output:</span>{" "}
                           {JSON.stringify(testcase.output)}
                         </p>
                       </div>
@@ -195,18 +199,19 @@ function CodePlayground(props) {
                       <div className="avatarBox rounded-full object-cover h-10 w-10 border-primary border-2">
                         <img
                         className="rounded-full"
-                          src={comment.userId.avatar}
-                          alt={comment.userId.fullName}
+                          src={comment.userId ? comment.userId.avatar : avatarNullUrl}
+                          alt={comment.userId ? comment.userId.fullName : "Anonymous"}
                         />
                       </div>
                       <div className="content">
                         <h4>{comment.content}</h4>
                         <p>
-                          {comment.userId.fullName} -{" "}
+                          {comment.userId ? comment.userId.fullName : "Anonymous"} -{" "}
                           {
+                            comment.userId ?
                             comment.userId.medals[
                               comment.userId.medals.length - 1
-                            ].name
+                            ].name : "Anonymous"
                           }
                         </p>
                       </div>
@@ -269,7 +274,7 @@ function CodePlayground(props) {
             }}
             options={{
               mode: lang,
-              theme: "material",
+              theme: "dracula",
               lineNumbers: true,
               extraKeys: {
                 "Ctrl-S": handleSave,

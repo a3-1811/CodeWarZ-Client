@@ -55,7 +55,7 @@ function SubmitResult(props) {
         <div className="leaveComment">
         <h2 className="font-bold text-4xl my-3 text text-primary text-center">Leave with your comment</h2>
         <form onSubmit={handleSubmitComment}>
-            <textarea name="comment" onChange={handleChangeComment} value={comment} className=' w-full resize-none h-40 mb-4   '></textarea>
+            <textarea name="comment" onChange={handleChangeComment} value={comment} className=' w-full resize-none h-30 mb-4'></textarea>
             <button type="submit" className='bg-primary px-3 py-2 text-white font-bold rounded-sm block ml-auto'>Comment</button>
         </form>
         </div>

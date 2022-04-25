@@ -11,6 +11,14 @@ import HomeTeamplate from "./templates/HomeTeamplate.js";
 import LanguageBegin from './pages/page/Home/LanguageBegin';
 import Chapter from './pages/page/Home/Chapter';
 import CodePlayground from './pages/page/Home/CodePlayground';
+import MessagePage from './pages/page/Home/MessagePage';
+import Rank from './pages/page/Home/Rank';
+import Friends from './pages/page/Home/Friends';
+import Notices from './pages/page/Home/Notices';
+import Battle from './pages/page/Home/Battle';
+import Stars from './pages/page/Home/Stars';
+
+
 import CodeTeamplate from './templates/CodeTeamplate';
 
 
@@ -24,8 +32,32 @@ const routes = () => [
     element: <ProtectedRoute><LanguageBegin /></ProtectedRoute>,
   },
   {
-    path: '/profile',
+    path: '/friends',
+    element: <ProtectedRoute><Friends /></ProtectedRoute>,
+  },
+  {
+    path: '/rank',
+    element: <ProtectedRoute><Rank /></ProtectedRoute>,
+  },
+  {
+    path: '/battle',
+    element: <ProtectedRoute><Battle /></ProtectedRoute>,
+  },
+  {
+  path: '/notices',
+  element: <ProtectedRoute><Notices /></ProtectedRoute>,
+  },
+  {
+    path: '/me',
     element: <ProtectedRoute><Profile /></ProtectedRoute>,
+  },
+  {
+    path: '/stars',
+    element: <ProtectedRoute><Stars /></ProtectedRoute>,
+  },
+  {
+    path: '/converstation',
+    element: <ProtectedRoute ><MessagePage /></ProtectedRoute>,
   },
   {
     path: '/chapter/:id',

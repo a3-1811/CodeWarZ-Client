@@ -1,0 +1,75 @@
+.members{
+    &__form{
+        width: 500px;
+        @include flexbox(center,center);
+        flex-direction: column;
+        .inputGroup{
+            width: 100%;
+            position: relative;
+            margin-bottom: 1.5rem;
+            color: #828282;
+            background: #f4f8f7;
+            .input-icon{
+                position: absolute;
+                top: 50%;
+                left: 15%;
+                transform: translate(-90%,-50%);
+                color: #828282;
+                transition: all 0.35s ease-in-out;
+                pointer-events: none;
+                height: 25px;
+                width: 25px;
+                i{
+                    font-size: 1rem;
+                }
+            }
+            .hint{
+                padding: 0.5rem 1rem;
+                display: none;
+                &.visible{
+                    display: block;
+                }
+            }
+            input,textarea{
+                background: transparent;
+                padding: 1rem 3rem;
+                border: 0;
+                transition: all 0.3s ease;
+                border: 1px solid transparent;
+                max-width: 500px;
+                width: 100%;
+                font-size: 1rem;
+                &:focus, &:valid{
+                    border: 1px solid #1d90f4;
+                    + label.input-icon{
+                        padding: 0 0.3rem;
+                        background: #fff;
+                        border-radius: 50%;
+                        text-align: center;
+                        top: 0;
+                        left: 10%;
+                        i{
+                            color: #1d90f4;
+                        }
+                    }
+                }
+            }
+            textarea{
+                resize: none;
+                height: 100px;
+            }
+            .message{
+                color: red;
+                font-size: 1.2rem;
+            }
+        }
+        button{
+            margin: 0 auto;
+            margin-bottom: 2rem;
+            padding: 1rem 2rem;
+        }
+        .members{
+            font-size: 1.4rem;
+        }
+    }
+}

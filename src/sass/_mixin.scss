@@ -1,0 +1,22 @@
+@mixin flexbox($align: flex-start, $justify: flex-start, $wrap: wrap,$dir: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $dir;
+    flex-wrap: $wrap;
+}
+
+$breakpoints-up:("medium" : "75rem","large" : "144rem");
+$breakpoints-down:("small": "769px","medium" : "1208.9px","large" : "143.89rem");
+
+@mixin breakpoints-up($size) {
+    @media(min-width: map-get($breakpoints-up, $size )){
+        @content;
+    }
+}
+
+@mixin breakpoints-down($size) {
+    @media(max-width: map-get($breakpoints-down, $size )){
+        @content;
+    }
+}
