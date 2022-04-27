@@ -2,6 +2,9 @@
    .content{
     height: 79vh;
     .left{
+        @include breakpoints-down("lg"){
+            width: 1/6;
+        }
         .conversation{
             @include flexbox();
             width: 100%;
@@ -12,6 +15,11 @@
             border: 1px solid #dddddd;
             &.active{
                 border: 2px solid $primary-color;
+            }
+            @include breakpoints-down("small"){
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
             .iconBox{
                 position: relative;
@@ -52,6 +60,15 @@
             }
             .preview{
                 width: 80%;
+                @include breakpoints-down("medium"){
+                    width: 50%;
+                }
+                @include breakpoints-down("lg"){
+                    width: 40%;
+                }
+                @include breakpoints-down("small"){
+                    width: 100%;
+                }
                 .name{
                     color : #fff;
                     font-weight: bold;
@@ -136,7 +153,7 @@
         .inputArea{
             .emojiBox{
                 position: absolute;
-                top: -450%;
+                bottom: 100%;
                 right: 0;
             }
             .controlBox{

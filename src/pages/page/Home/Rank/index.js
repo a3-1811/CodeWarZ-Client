@@ -23,6 +23,16 @@ function Rank() {
       name: "Chanllenge",
       key : "chanllenge",
       active: false
+    },
+    {
+      name: "Time winner",
+      key: "timeWinner",
+      active:false
+    },
+    {
+      name: "Time Battle",
+      key: "timeBattle",
+      active:false
     }
   ])
   const [keyActive, setKeyActive] = useState("timeComplier")
@@ -30,7 +40,6 @@ function Rank() {
     (async()=>{
       try {
         let {ranking} = await UserApi.ranking()
-        
         //Sort by Complier
         let sortResult = ranking.sort((user,nextUser)=>{
           return nextUser.stats[keyActive] - user.stats[keyActive] 
@@ -122,7 +131,7 @@ function Rank() {
             </div>
           </div>
         </div>
-        <div className="other mt-5 w-full flex gap-x-10  flex-wrap gap-y-5 overflow-y-scroll h-40">
+        <div className="other mt-5 w-full flex justify-center  gap-x-10  flex-wrap gap-y-5 overflow-y-scroll h-1/2 sm:h-80">
         <div className="flex justify-between items-center gap-x-3 ">
             <div className="rank flex justify-center items-center flex-col">
               <span className="text-white font-bold">1</span>

@@ -20,6 +20,9 @@ import Stars from './pages/page/Home/Stars';
 
 
 import CodeTeamplate from './templates/CodeTeamplate';
+import NextStep from './pages/page/Home/Stars/NextStep';
+import Fight from './pages/page/Home/Battle/Fight';
+import BattleResult from './pages/page/Home/BattleResult';
 
 
 const routes = () => [
@@ -40,8 +43,16 @@ const routes = () => [
     element: <ProtectedRoute><Rank /></ProtectedRoute>,
   },
   {
+    path: '/battleResult/:winnerId',
+    element: <CodeTeamplate><BattleResult /></CodeTeamplate>,
+  },
+  {
     path: '/battle',
     element: <ProtectedRoute><Battle /></ProtectedRoute>,
+  },
+  {
+    path: '/fight/:room',
+    element: <CodeTeamplate><Fight /></CodeTeamplate>,
   },
   {
   path: '/notices',
@@ -66,6 +77,10 @@ const routes = () => [
   {
     path: '/code/:id',
     element: <CodeRoute ><CodePlayground /></CodeRoute>,
+  },
+  {
+    path: '/stars/:method',
+    element: <ProtectedRoute ><NextStep /></ProtectedRoute>,
   },
   {
     path: '/login',

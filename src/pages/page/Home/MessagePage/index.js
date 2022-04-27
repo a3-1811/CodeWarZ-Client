@@ -166,7 +166,7 @@ function MesssagePage(props) {
         <span className="p-1 px-2 bg-primary text-white rounded-xl text-sm cursor-pointer ml-3" onClick={handleOpen}>Create new conversation</span>
       </div>
       <div className="content flex">
-        <div className="left w-2/6 h-full p-1 flex-col flex-nowrap gap-x-3 overflow-y-scroll">
+        <div className="left w-2/6 lg:w-1/6 h-full p-1 flex-col flex-nowrap gap-x-3 overflow-y-scroll">
           {/* Contain icon user conversation */}
           {conversation.length === 0
             ? <h2 className="text-white">Create new converstation to chat</h2>
@@ -174,7 +174,7 @@ function MesssagePage(props) {
                 return (
                   <div
                     key={c._id}
-                    className={`conversation ${c.active ? "active" : ""} `}
+                    className={`conversation  ${c.active ? "active" : ""} `}
                     onClick={() => {
                       handleChangeConversation(c._id);
                     }}
@@ -253,7 +253,7 @@ function MesssagePage(props) {
                 );
               })}
         </div>
-        <div className="right w-4/6 h-full">
+        <div className="right w-4/6 lg:w-5/6 h-full">
           {/* Contain all messages in a conversation */}
           <div className="message__content h-5/6">
             {currentConversation?.messages.length > 0 ? (
