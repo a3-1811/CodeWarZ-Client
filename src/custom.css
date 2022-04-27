@@ -71,6 +71,21 @@ body{
     z-index: -1;
     mix-blend-mode: multiply;
 }
+.main.battle::before{
+    content: '';
+    background: url('./assets/battlebg.jpg');
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    z-index: -1;
+    mix-blend-mode: multiply;
+}
 
 .sidebar__right {
     width: 50px;

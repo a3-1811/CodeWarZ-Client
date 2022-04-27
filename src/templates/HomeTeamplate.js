@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserApi from "../apis/userApi";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 // Zutand store
 import useStore from "../store/useStore";
 
 function Main({ children }) {
+  const location = useLocation();
   const updateInfo = useStore((state) => state.updateInfo);
   const user = useStore((state) => state.user);
 const fetchMyChapters = useStore((state) => state.fetchMyChapters);
@@ -35,7 +36,7 @@ const fetchMyChapters = useStore((state) => state.fetchMyChapters);
     history("/login");
   };
   return (
-    <div className="main w-full h-screen max-h-screen md:p-1">
+    <div className={`main w-full h-screen max-h-screen md:p-1 ${location.pathname.includes('battle') ? "battle" : ""}`}>
       {/* Sidebar left */}
       <div className="md:hidden sidebar__left fixed h-full ml-4 overflow-hidden duration-1000 bg-gray-500 transition-width z-10 left-0 bottom-0 rounded-xl top-16 bg-opacity-20">
         <ul

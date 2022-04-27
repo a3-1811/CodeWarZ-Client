@@ -13,9 +13,11 @@ function Chapter() {
       setChapter([...chapters[id].chapter])
   },[chapters])
   return (
-    <div className='flex justify-center items-center xl:flex-wrap xl:flex-row xl:gap-1 h-4/5 w-full gap-3'>{
+    <div className='h-screen'>
+    <div className='flex justify-center items-center xl:flex-wrap xl:flex-row xl:gap-1 h-5/6 w-full gap-3'>{
       chapter.length > 0 ? chapter.map((item,index)=> <Chanllenge chanllenge={item} key={index}/>) : ""
     }</div>
+    </div>
   )
 }
 

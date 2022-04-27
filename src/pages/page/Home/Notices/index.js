@@ -60,11 +60,11 @@ function Notices() {
   }
 
   return (
-    <div>
+    <div className="h-screen">
       <h2 className="text-center text-white font-semibold text-3xl mb-5">
         Notifications
       </h2>
-      <div className="notifications w-full h-96 overflow-y-scroll">
+      <div className="notifications w-full h-3/4 overflow-y-scroll">
         {
           invites ? invites.map((invite)=>{
             return (
