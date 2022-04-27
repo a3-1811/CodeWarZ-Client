@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import GiftCard from "../../../../../assets/star/gift-star.png";
 import PaymentApi from "../../../../../apis/paymentApi";
 import useStore from "../../../../../store/useStore";
@@ -7,16 +6,15 @@ import useStore from "../../../../../store/useStore";
 function NextStep() {
   const starsFlag = [100,500,1000,2000,5000,10000]
   const [amountSelected, setAmountSelected] = useState(100)
-  let history = useNavigate()
   const user = useStore(state=>state.user)
 
   const handleNextStep = async ()=>{
     try {
-      let url = await PaymentApi.createPaymentUrl({
-        amount: amountSelected,
+      let {vnpUrl} = await PaymentApi.createPaymentUrl({
+        amount: amountSelected*100,
         orderDescription :`${user.fullName} buy stars in system. Amount :${amountSelected}.`
       })
-      console.log(url)
+      window.location.href = vnpUrl
     } catch (error) {
       console.log({error})
       

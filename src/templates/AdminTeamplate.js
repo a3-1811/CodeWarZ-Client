@@ -16,11 +16,15 @@ function Main({ children }) {
     (async () => {
       try {
         let checkAuth = await UserApi.checkAuthen();
+        console.log(checkAuth)
         localStorage.setItem("acc", JSON.stringify(checkAuth.user));
         updateInfo(checkAuth.user);
         await fetchMyChapters()
         if (checkAuth.user.programing_languages.length === 0) {
           history("/chooseLanguages");
+        }
+        if(!checkAuth.user.isAdmin){
+           history("/");
         }
       } catch (error) {
         localStorage.removeItem("acc");
@@ -36,60 +40,12 @@ function Main({ children }) {
     history("/login");
   };
   return (
-    <div className={`main w-full h-screen max-h-screen md:p-1 ${location.pathname.includes('battle') ? "battle" : ""}`}>
-      {/* Sidebar left */}
-      <div className="md:hidden sidebar__left fixed h-full ml-4 overflow-hidden duration-1000 bg-gray-500 transition-width z-10 left-0 bottom-0 rounded-xl top-16 bg-opacity-20">
-        <ul
-          className="flex flex-col items-center w-full"
-          style={{ height: "90%" }}
-        >
-          <li className="my-3 text-center">
-            <NavLink to="/"   activeclassname="active">
-              <i className="fa fa-code text-gray-500 text-xl p-2"></i>
-            </NavLink>
-          </li>
-          <li className="my-3 text-center">
-            <NavLink to="/battle" activeclassname="active">
-              <i className="fab fa-galactic-senate text-gray-500 text-xl p-2 "></i>
-            </NavLink>
-          </li>
-          <li className="my-3 text-center">
-            <NavLink to="/notices" activeclassname="active">
-              <i className="fa fa-bell text-gray-500 text-xl p-2 "></i>
-            </NavLink>
-          </li>
-          <li className="my-3 text-center">
-            <NavLink to="/converstation" activeclassname="active">
-              <i className="fab fa-facebook-messenger text-gray-500 text-xl p-2 "></i>
-            </NavLink>
-          </li>
-          <li className="my-3 text-center">
-            <NavLink to="/friends" activeclassname="active">
-              <i className="fa fa-user-friends text-gray-500 text-xl p-2 "></i>
-            </NavLink>
-          </li>
-          <li className="my-3 text-center">
-            <NavLink to="/rank" activeclassname="active">
-              <i className="fa fa-trophy text-gray-500 text-xl p-2 "></i>
-            </NavLink>
-          </li>
-          {user && user.isAdmin && <li className="my-3 text-center">
-            <NavLink to="/dashboard" className="active">
-              <i className="fab fa-teamspeak text-gray-500 text-xl p-2 "></i>
-            </NavLink>
-          </li>}
-          <li className="mt-auto text-center">
-            <button onClick={handleLogout}>
-              <i className="fa fa-sign-out-alt text-gray-500 text-xl p-2 "></i>
-            </button>
-          </li>
-        </ul>
-      </div>
+    <div className={`w-full h-screen max-h-screen md:p-1`}>
       {/* Navbar */}
       <nav className="bg-transparent border-gray-200 sm:px-4 py-2.5 z-10">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <Link to="/" className="flex items-center ml-5">
-            <span className="self-center text-xl font-semibold whitespace-nowrap text-white">
+            <span className="self-center text-xl font-semibold whitespace-nowrap text-black">
               CWZ
             </span>
           </Link>
@@ -99,7 +55,7 @@ function Main({ children }) {
               <li className="flex items-center justify-center">
                 <a
                   href="#!"
-                  className="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent  md:p-0 dark:text-white"
+                  className="block py-2 pr-4 pl-3 text-black rounded md:bg-transparent  md:p-0 dark:text-black"
                   aria-current="page"
                 >
                   12:56 PM
@@ -107,7 +63,7 @@ function Main({ children }) {
               </li>
               <li className="flex items-center flex-1 justify-end">
                 <i className="fa fa-star text-yellow-400 mr-2 text-lg"></i>
-                <span href="#!" className="block text-white text-sm font-bold">
+                <span href="#!" className="block text-black text-sm font-bold">
                   {user.point_stars} STAR
                 </span>
                 <NavLink
@@ -121,7 +77,7 @@ function Main({ children }) {
             </ul>
           </div>
           <div className="flex items-center md:order-2">
-            <span className="self-center text-sm font-bold pr-4 whitespace-nowrap text-white">
+            <span className="self-center text-sm font-bold pr-4 whitespace-nowrap text-black">
               {user.fullName}
             </span>
             <button
@@ -131,7 +87,7 @@ function Main({ children }) {
               aria-expanded="false"
               data-dropdown-toggle="dropdownProfile"
             >
-              <span className="sr-only text-white">Open user menu</span>
+              <span className="sr-only text-black">Open user menu</span>
               <img
                 className="w-11 h-11 rounded-full"
                 src={user.avatar}
@@ -144,7 +100,7 @@ function Main({ children }) {
               id="dropdownProfile"
             >
               <div className="py-3 px-4">
-                <span className="block text-sm text-gray-900 dark:text-white">
+                <span className="block text-sm text-gray-900 dark:text-black">
                   {user.fullName}
                 </span>
                 <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
@@ -155,7 +111,7 @@ function Main({ children }) {
                 <li>
                   <NavLink 
                     to="/me"
-                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black"
                   >
                     Your profile
                   </NavLink>
@@ -163,7 +119,7 @@ function Main({ children }) {
                 <li>
                   <NavLink 
                     to="/stars"
-                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black"
                   >
                     Buy Star
                   </NavLink>
@@ -171,7 +127,7 @@ function Main({ children }) {
                 <li>
                   <button 
                     onClick={handleLogout}
-                    className="block py-2 w-full hover:bg-red-600 hover:text-white px-4 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    className="block py-2 w-full hover:bg-red-600 hover:text-black px-4 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black"
                   >
                     Logout
                   </button>
@@ -214,7 +170,7 @@ function Main({ children }) {
             </button>
             <div
               id="mobile-menu"
-              className="hidden fixed text-white ml-4  w-1/2  duration-1000 bg-black transition-width z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-10 rounded-xl bg-opacity-90"
+              className="hidden fixed text-black ml-4  w-1/2  duration-1000 bg-black transition-width z-50 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-10 rounded-xl bg-opacity-90"
             >
               <ul
                 className="flex flex-col items-center w-full"
@@ -268,53 +224,6 @@ function Main({ children }) {
           </div>
         </div>
       </nav>
-      {/* Sidebar right */}
-      <div className="md:hidden sidebar__right fixed h-full mr-4 overflow-hidden duration-1000 bg-gray-500 transition-width right-0 top-16 rounded-xl bg-opacity-20 z-10">
-        <ul className="flex flex-col items-center h-full w-full">
-          <li className="my-3">
-            <Link to="/me" className="">
-              <i className="fa fa-user text-white text-lg"></i>
-            </Link>
-          </li>
-          <span
-            className="block w-full mt-0 mb-3 bg-gray-500"
-            style={{ height: 1 }}
-          />
-          <li className="px-3 ">
-            <div className="flex flex-col justify-center items-center">
-              <div className="h-10 w-10">
-                <img
-                  src="https://images.unsplash.com/photo-1638913662252-70efce1e60a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-                  alt=""
-                  className="rounded-full object-cover w-full h-full"
-                />
-              </div>
-            </div>
-          </li>
-          <li className="px-3">
-            <div className="flex flex-col justify-center items-center">
-              <div className="flex flex-col justify-center items-center my-4 h-10 w-10">
-                <img
-                  src="https://images.unsplash.com/photo-1645632698932-463c91daea4a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-                  alt=""
-                  className="rounded-full object-cover w-full h-full"
-                />
-              </div>
-            </div>
-          </li>
-          <li className="px-3 ">
-            <div className="flex flex-col justify-center items-center">
-              <div className="h-10 w-10">
-                <img
-                  src="https://images.unsplash.com/photo-1645522165850-a8b468936735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-                  alt=""
-                  className="rounded-full object-cover w-full h-full"
-                />
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
       {/* Content redering */}
       <div className="md:p-5 main__content px-20 w-full">{children}</div>
     </div>

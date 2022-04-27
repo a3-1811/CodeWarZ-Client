@@ -17,12 +17,17 @@ import Friends from './pages/page/Home/Friends';
 import Notices from './pages/page/Home/Notices';
 import Battle from './pages/page/Home/Battle';
 import Stars from './pages/page/Home/Stars';
+//Admin template
+import Dashboard from './pages/page/Admin/Dashboard';
 
 
 import CodeTeamplate from './templates/CodeTeamplate';
+import AdminTeamplate from './templates/AdminTeamplate';
+
 import NextStep from './pages/page/Home/Stars/NextStep';
 import Fight from './pages/page/Home/Battle/Fight';
 import BattleResult from './pages/page/Home/BattleResult';
+import VNPayReturn from './pages/page/Home/VNPayReturn';
 
 
 const routes = () => [
@@ -37,6 +42,10 @@ const routes = () => [
   {
     path: '/friends',
     element: <ProtectedRoute><Friends /></ProtectedRoute>,
+  },
+  {
+    path: '/VNPayReturn',
+    element: <CodeTeamplate><VNPayReturn /></CodeTeamplate>,
   },
   {
     path: '/rank',
@@ -103,6 +112,10 @@ const routes = () => [
     element: <VerifyPassword />
   },
   {
+    path: '/dashboard',
+    element: <AdminRoute><Dashboard /></AdminRoute>
+  },
+  {
     path: '*',
     element: <Page404 />,
   },
@@ -130,5 +143,16 @@ const CodeRoute = (
     )
 };
 
+
+const AdminRoute = (
+  {redirectPath = '/login',
+  children}
+) => {
+    return (
+      <AdminTeamplate>
+        {children}
+      </AdminTeamplate>
+    )
+};
 
 export default routes;

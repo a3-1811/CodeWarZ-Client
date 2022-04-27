@@ -6,6 +6,10 @@ const PaymentApi = {
     createPaymentUrl(params){
         const url =baseUri + '/create_payment_url'
         return axiosClient.post(url, params)
+    },
+    addPaymentInfo(params){
+        const url =baseUri + '/'
+        return axiosClient.post(url, params)
     }
 }
 
