@@ -3,7 +3,6 @@ import NotificationApi from "../../../../apis/notificationApi";
 import UserApi from "../../../../apis/userApi";
 
 import { useNavigate } from "react-router-dom";
-
 function Notices() {
   const [notifications, setNotifications] = useState(null);
   const [invites, setInvites] = useState(null);
@@ -92,7 +91,7 @@ function Notices() {
                   className="mb-3 text-white p-2 notification w-full flex justify-between items-center bg-gray-600 bg-opacity-40"
                 >
                   <div className="content w-2/3">
-                    <h3 className="font-bold text-lg">{noti.title}</h3>
+                    <h3 className="font-bold text-lg text-primary">{noti.title}</h3>
                     <p className="limit-1 w-full">{noti.content}</p>
                   </div>
                   <span className="time">{calcTime(noti.createdAt)}</span>

@@ -89,6 +89,10 @@ const UserApi = {
                 "Authorization" : `Bearer ${token}`
             },
         })
+    },
+    manager(){
+        const url ='/managers/'
+        return axiosClient.get(url)
     }
 
 }

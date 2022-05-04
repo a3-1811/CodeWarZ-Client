@@ -12,7 +12,6 @@ const createChapterSlice = (set, get) => ({
         set({ chapters})
       },
     getChapterByIndex: (index)=>{
-      console.log(get().chapters)
         return get().chapters.length === 0 ? [] : get().chapters[index].chapter
     }
   });

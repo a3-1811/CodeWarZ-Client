@@ -252,3 +252,18 @@ body{
 .-z-1{
     z-index: -1;
 }
+.dashboard{
+    box-shadow: 5px 0px 6px rgba(219, 219, 219, 0.5);
+}
+.right__content{
+    box-shadow: -5px 0px 6px rgba(219, 219, 219, 0.5);
+}
+
+
+.dashboard .active li{
+    background-color: #1d90f4;
+    color: #fff;
+}
+.dashboard .main__content{
+    background: #B1B1B1;
+}

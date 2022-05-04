@@ -80,7 +80,7 @@ function Profile() {
           <div className="content w-3/5 h-5/6">
             <div className="info w-full  h-1/4 p-3 mb-2 bg-black text-white">
               {/* Name, Email*/}
-              <h2 className="title font-bold text-4xl">{me.fullName}</h2>
+              <h2 className="title font-bold text-4xl text-white">{me.fullName}</h2>
               <p>Email: {me.email}</p>
             </div>
             <div className="stats w-full p-2 h-3/4 bg-black text-white">
@@ -89,25 +89,25 @@ function Profile() {
                   <div className="details flex justify-between items-center">
                     {/* Total submit, total execute code, total fail */}
                     <div className="border-r-2 border-primary p-2">
-                      <h3>Total execution times</h3>
+                      <h3 className="text-white">Total execution times</h3>
                       <span>{record["time"]} s</span>
                     </div>
                     <div className="border-r-2 border-primary p-2">
-                      <h3>Time Compiles</h3>
+                      <h3 className="text-white">Time Compiles</h3>
                       <span>{record["timeComplier"]} time</span>
                     </div>
                     <div className="border-r-2 border-primary p-2">
-                      <h3>Time Errors</h3>
+                      <h3 className="text-white">Time Errors</h3>
                       <span>{record["timeError"]} time</span>
                     </div>
                     <div className="border-r-2 border-primary p-2">
-                      <h3>Time Submit</h3>
+                      <h3 className="text-white">Time Submit</h3>
                       <span>{record["timeSubmit"]} time</span>
                     </div>
                   </div>
                   <div className="chart h-full w-full">
                     {/* Chart of Total submit, total execute code, total fail */}
-                    <h2 className="text-center font-semibold text-2xl my-2">Statistics</h2>
+                    <h2 className="text-center font-semibold text-2xl my-2 text-white">Statistics</h2>
                     <div className="chart__content h-2/3">
                       <Pie
                         data={chartData}
@@ -145,7 +145,7 @@ function Profile() {
               </h2>
             </div>
           <div className="border-white border-t-2 mt-4 w-full">
-            <h2 className="font-bold text-lg my-3">Medals:</h2>
+            <h2 className="font-bold text-lg my-3 text-white">Medals:</h2>
           <p>
                 {me.medals.map((medal) => (
                   <span
