@@ -10,6 +10,10 @@ const PaymentApi = {
     addPaymentInfo(params){
         const url =baseUri + '/'
         return axiosClient.post(url, params)
+    },
+    getListPayment(){
+        const url =baseUri + '/'
+        return axiosClient.get(url)
     }
 }
 

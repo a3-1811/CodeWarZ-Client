@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/solid";
 import UserApi from "../../../apis/userApi";
 import { useNavigate } from "react-router-dom";
 import ConfirmBox from "../../../components/shared/ConfirmBox";
 import Notice from "../../../components/shared/Notice";
 import useStore from "../../../store/useStore";
-
+import { SocketContext } from "../../../contexts/socket";
 
 function Main() {
 const history=  useNavigate()
-// const me = useStore((state) => state.user)
+const user = useStore(state => state.user)
+const socket = useContext(SocketContext);
 // Zutands Store
 const updateChapter = useStore((state) => state.updateChapter);
 const chapters = useStore((state) => state.chapters);
@@ -25,6 +26,15 @@ const [dialog, setDialog] = useState({
   isSuccess: false,
   index: -1
 });
+
+useEffect(() => {
+  // emit USER_ONLINE event
+  socket.emit("ADD_USER_ONLINE", {
+    id: user._id,
+    fullName: user.fullName,
+  });
+}, [socket])
+
 
   const handleOpenChapter=(chapterIndex)=>{
     // Set notice for change point stars to unlock new chapter

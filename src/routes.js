@@ -19,7 +19,11 @@ import Battle from './pages/page/Home/Battle';
 import Stars from './pages/page/Home/Stars';
 //Admin template
 import Dashboard from './pages/page/Admin/Dashboard';
-
+import ManagerChanllenge from './pages/page/Admin/ManagerChanllenge';
+import ManagerDiffcult from './pages/page/Admin/ManagerDiffcult';
+import ManagerNotification from './pages/page/Admin/ManagerNotification';
+import ManagerUser from './pages/page/Admin/ManagerUser';
+import Statistic from './pages/page/Admin/Statistics';
 
 import CodeTeamplate from './templates/CodeTeamplate';
 import AdminTeamplate from './templates/AdminTeamplate';
@@ -28,6 +32,9 @@ import NextStep from './pages/page/Home/Stars/NextStep';
 import Fight from './pages/page/Home/Battle/Fight';
 import BattleResult from './pages/page/Home/BattleResult';
 import VNPayReturn from './pages/page/Home/VNPayReturn';
+import AddChanllenge from './pages/page/Admin/ManagerChanllenge/AddChanllenge';
+import DetailChallenge from './pages/page/Admin/ManagerChanllenge/DetailChallenge';
+import UpdateChallenge from './pages/page/Admin/ManagerChanllenge/UpdateChanllenge';
 
 
 const routes = () => [
@@ -114,6 +121,38 @@ const routes = () => [
   {
     path: '/dashboard',
     element: <AdminRoute><Dashboard /></AdminRoute>
+  },
+  {
+    path: '/manager-chanllenge',
+    element: <AdminRoute><ManagerChanllenge /></AdminRoute>
+  },
+  {
+    path: '/manager-chanllenge/add',
+    element: <AdminRoute><AddChanllenge /></AdminRoute>
+  },
+  {
+    path: '/manager-chanllenge/detail/:id',
+    element: <AdminRoute><DetailChallenge /></AdminRoute>
+  },
+  {
+    path: '/manager-chanllenge/update/:id',
+    element: <AdminRoute><UpdateChallenge /></AdminRoute>
+  },
+  {
+    path: '/manager-difficult',
+    element: <AdminRoute><ManagerDiffcult /></AdminRoute>
+  },
+  {
+    path: '/manager-notification',
+    element: <AdminRoute><ManagerNotification /></AdminRoute>
+  },
+  {
+    path: '/manager-user',
+    element: <AdminRoute><ManagerUser /></AdminRoute>
+  },
+  {
+    path: '/statistic',
+    element: <AdminRoute><Statistic /></AdminRoute>
   },
   {
     path: '*',
