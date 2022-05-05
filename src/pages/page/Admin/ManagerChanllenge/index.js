@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Table } from 'antd';
+import { Select, Table, Input} from 'antd';
 import BattleApi from "../../../../apis/battleApi";
 import useStore from "../../../../store/useStore";
 import "./style.scss";
-
 
 const columns = [
   {
@@ -16,12 +15,12 @@ const columns = [
   {
       title: 'Number Args',
       dataIndex: 'numberArgs',
-      width: '20%',
+      width: '15%',
     },
     {
       title: 'Hint',
       dataIndex: 'hint',
-      width: '20%',
+      width: '15%',
       render: (hint) => <span className="limit-1">{hint}</span>,
     },
     {
@@ -39,18 +38,24 @@ const columns = [
   {
       title: '',
       dataIndex: 'action1',
+      width: '15%',
       render: (item,record ) => <Link className="text-blue-500 underline" to={`/manager-chanllenge/detail/${record._id}`}>Detail</Link>,
     },
     {
       title: '',
+      width: '15%',
       dataIndex: 'action2',
       render: (item,record ) => <Link className="text-blue-500 underline" to={`/manager-chanllenge/update/${record._id}`}>Update</Link>,
 
     },
 ];
+const { Option } = Select;
 
 function ManagerChanllenge() {
   const chanllenges = useStore(state=>state.chanllenges)
+  const difficults = useStore(state=>state.difficults)
+  const searchRef = useRef('')
+
   const [table, setTable] = useState({
     data: [],
     pagination: {
@@ -62,9 +67,9 @@ function ManagerChanllenge() {
   useEffect(() => {
     //Data demo
     if(chanllenges && chanllenges.length > 0){
-      console.log(chanllenges)
       let data = chanllenges.map((chanllenge)=>{
         return {
+          key: chanllenge._id,
           ...chanllenge
         }
       })
@@ -75,13 +80,79 @@ function ManagerChanllenge() {
   const handlePanigationChange = (current)=>{
     setTable({...table,pagination:{...table.pagination,current}})
   }
+  const handleChangeDifficult = (value)=>{
+    let data
+    if(value == 'all'){
+      data = chanllenges.map((chanllenge)=>{
+        return {
+          key: chanllenge._id,
+          ...chanllenge
+        }
+      })
+    }else{
+      data = chanllenges.filter(item=>item.difficult._id === value).map((chanllenge)=>{
+        return {
+          key: chanllenge._id,
+          ...chanllenge
+        }
+      })
+    }
+     
+    setTable({...table,data : data})
+  }
+  const handleOnSearch = (e)=>{
+    console.log(e.target.value)
+    let value = e.target.value
+    if(searchRef){
+      clearInterval(searchRef.current)
+    }
+    searchRef.current = setTimeout(() => {
+     let temp = chanllenges.filter(item=>item.name.toLowerCase().includes(value.toLowerCase()) || 
+     item.descriptions.toLowerCase().includes(value.toLowerCase()) || item.hint.toLowerCase().includes(value.toLowerCase())
+     )
+
+     let data = temp.map((chanllenge)=>{
+      return {
+        key: chanllenge._id,
+        ...chanllenge
+      }
+    })
+      setTable({...table,data : data})
+      clearInterval(searchRef.current)
+    }, 700);
+  }
   return (
-    <div className="content pl-[24px] pt-[29px] pr-[100px] relative">
+    <div className="manager-chanllenge content pl-[24px] pt-[29px] pr-[100px] relative">
       <div className="path text-gray-600 font-bold text-lg mb-11">
       Chanlenge manager &gt;{" "}
         <span className="text-primary font-bold">List challenge</span>
       </div>
       <h2 className="text-primary text-2xl font-bold mb-4">Chanlenge manager</h2>
+      <div className="controls flex justify-between">
+        <div className="flex gap-x-2">
+          <div className="item flex flex-col text-sm">
+            <span className="font-semibold">Độ khó</span>
+            {difficults &&
+            <Select
+            onChange={handleChangeDifficult}
+            defaultValue={"All"}
+            className="w-[200px]"
+          >
+            <Option value="all">All</Option>
+            {difficults.map((diff)=><Option key={diff._id} value={diff._id}>{diff.name}</Option>)}
+          </Select>
+            }
+          </div>
+        </div>
+        <div className="item flex flex-col text-sm">
+          <span className="font-semibold">Từ khoá</span>
+          <Input.Search
+            placeholder="Nhập từ khóa"
+            onChange={handleOnSearch}
+            className="w-[250px]"
+          />
+        </div>
+      </div>
       <div className="relative">
       <Table
         className="mt-4"
