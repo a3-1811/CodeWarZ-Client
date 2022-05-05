@@ -68,7 +68,7 @@ function Main({ children }) {
                 </NavLink>
                 <NavLink className="block w-full" to="/manager-difficult" activeclassname="active">
               <li className="px-[17px] py-[10px] text-sm font-medium text-gray-500 hover:text-white hover:bg-primary">
-              <i className="fab fa-optin-monster mr-[8px]"></i>Diffcult
+              <i className="fab fa-optin-monster mr-[8px]"></i>Difficult
               </li>
                 </NavLink>
                 <NavLink className="block w-full" to="/manager-notification" activeclassname="active">
