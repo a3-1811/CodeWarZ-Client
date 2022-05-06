@@ -177,7 +177,7 @@ function CodePlayground(props) {
                           <span className="font-bold">Input:</span>{" "}
                           {testcase.input.map((item) => (
                             <span key={item.length}>
-                              {JSON.stringify(item)}
+                              {JSON.stringify(item)} ,
                             </span>
                           ))}
                         </p>
