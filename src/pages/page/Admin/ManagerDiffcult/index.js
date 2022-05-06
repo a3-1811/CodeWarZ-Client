@@ -85,7 +85,6 @@ function ManagerDifficult() {
   }
   //handle update modal
   const handleUpdate = (id)=>{
-    console.log(difficults)
     let index = difficults.findIndex(item => item._id === id)
    if(index!=-1){
     setUpdateModal({
@@ -110,7 +109,7 @@ function ManagerDifficult() {
   }
   const handleStatusAdd = (show)=>{
     setAddModal({
-      ...updateModal,
+      ...addModal,
       show
     })
   }
@@ -121,11 +120,11 @@ function ManagerDifficult() {
         <span className="text-primary font-bold">List difficults</span>
       </div>
       <h2 className="text-primary text-2xl font-bold mb-4">Difficult manager</h2>
-      <div className="controls flex justify-end">
+      <div className="controls flex justify-end lg:justify-center">
         <div className="item flex flex-col text-sm">
-          <span className="font-semibold">Từ khoá</span>
+          <span className="font-semibold">Keyword</span>
           <Input.Search
-            placeholder="Nhập từ khóa"
+            placeholder="Type something here!"
             onChange={handleOnSearch}
             className="w-[250px]"
           />

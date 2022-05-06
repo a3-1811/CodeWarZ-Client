@@ -162,7 +162,6 @@ function MesssagePage(props) {
   return (
     <div className="chat h-full w-full">
       <div className="chat__title mb-2 flex justify-end items-center">
-      <span className="p-1 px-2 bg-primary text-white rounded-xl text-sm cursor-pointer"><i className="fa fa-mobile-alt"></i> Call video</span>
         <span className="p-1 px-2 bg-primary text-white rounded-xl text-sm cursor-pointer ml-3" onClick={handleOpen}>Create new conversation</span>
       </div>
       <div className="content flex">

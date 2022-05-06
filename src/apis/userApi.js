@@ -8,6 +8,10 @@ const UserApi = {
         const url =baseUri + '/'
         return axiosClient.post(url, params)
     },
+    createNewAdmin(params){
+        const url =baseUri + '/admin'
+        return axiosClient.post(url, params)
+    },
     loginAccount(params){
         const url =baseUri + '/login'
         return axiosClient.post(url, params)

@@ -81,11 +81,6 @@ function Main({ children }) {
               <i className="fa fa-users-cog mr-[8px]"></i>User
               </li>
                 </NavLink>
-                <NavLink className="block w-full" to="/statistic" activeclassname="active">
-              <li className="px-[17px] py-[10px] text-sm font-medium text-gray-500 hover:text-white hover:bg-primary">
-              <i className="fa fa-atlas  mr-[8px]"></i>Statistic
-              </li>
-                </NavLink>
               <button className="block text-left w-full mt-auto" onClick={handleLogout} activeclassname="active">
                 <li className="px-[17px] py-[10px] text-sm font-medium text-gray-500 hover:text-white hover:bg-primary">
                 <i className="fa fa-sign-out-alt mr-[8px]"></i>Logout

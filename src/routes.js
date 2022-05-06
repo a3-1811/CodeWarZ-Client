@@ -23,7 +23,6 @@ import ManagerChanllenge from './pages/page/Admin/ManagerChanllenge';
 import ManagerDiffcult from './pages/page/Admin/ManagerDiffcult';
 import ManagerNotification from './pages/page/Admin/ManagerNotification';
 import ManagerUser from './pages/page/Admin/ManagerUser';
-import Statistic from './pages/page/Admin/Statistics';
 
 import CodeTeamplate from './templates/CodeTeamplate';
 import AdminTeamplate from './templates/AdminTeamplate';
@@ -149,10 +148,6 @@ const routes = () => [
   {
     path: '/manager-user',
     element: <AdminRoute><ManagerUser /></AdminRoute>
-  },
-  {
-    path: '/statistic',
-    element: <AdminRoute><Statistic /></AdminRoute>
   },
   {
     path: '*',

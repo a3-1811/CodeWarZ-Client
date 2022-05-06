@@ -135,13 +135,13 @@ function CodePlayground(props) {
     );
     let { code } = chanllenge.defaultCode[index];
     let temp;
-    if (chanllenge.currentCode[index].code) {
+    if (chanllenge.currentCode[index]?.code) {
       temp = chanllenge.currentCode[index].code;
     } else {
       temp = code.split("$");
     }
     //Exist code user ?
-    let newCode = typeof temp === "string" ? temp : temp;
+    let newCode = typeof temp === "string" ? temp : temp[0].concat(temp[1]);
     setCode(newCode);
   };
   return (
