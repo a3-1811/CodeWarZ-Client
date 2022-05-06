@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import UserApi from "../apis/userApi";
 import { Link,useLocation } from "react-router-dom";
@@ -10,6 +10,8 @@ function Main({ children }) {
   const updateInfo = useStore((state) => state.updateInfo);
   const user = useStore((state) => state.user);
   const fetchMyChapters = useStore((state) => state.fetchMyChapters);
+  const timeCounter = useRef('') 
+  const [time, setTime] = useState("")
 
   const history = useNavigate();
   useEffect(() => {
@@ -28,6 +30,14 @@ function Main({ children }) {
         history("/login");
       }
     })();
+    timeCounter.current = setInterval(() => {
+      var d = new Date();
+      var n = d.toLocaleTimeString();
+      setTime(n)
+    }, 1000);
+    return ()=>{
+      clearInterval(timeCounter.current)
+    }
   }, [history, updateInfo,fetchMyChapters]);
   const handleLogout = async () => {
     await UserApi.logout();
@@ -102,7 +112,7 @@ function Main({ children }) {
                   className="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent  md:p-0 dark:text-white"
                   aria-current="page"
                 >
-                  12:56 PM
+                  {time}
                 </a>
               </li>
               <li className="flex items-center flex-1 justify-end">
@@ -280,39 +290,21 @@ function Main({ children }) {
             className="block w-full mt-0 mb-3 bg-gray-500"
             style={{ height: 1 }}
           />
-          <li className="px-3 ">
+          {user.friends ? user?.friends.map((friend,index)=>{
+            return (
+              <li className="px-3 mt-3" key={index}>
             <div className="flex flex-col justify-center items-center">
               <div className="h-10 w-10">
                 <img
-                  src="https://images.unsplash.com/photo-1638913662252-70efce1e60a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-                  alt=""
+                  src={`${process.env.REACT_APP_API_URL}/users/${friend}/avatar`}
+                  alt="avatar"
                   className="rounded-full object-cover w-full h-full"
                 />
               </div>
             </div>
           </li>
-          <li className="px-3">
-            <div className="flex flex-col justify-center items-center">
-              <div className="flex flex-col justify-center items-center my-4 h-10 w-10">
-                <img
-                  src="https://images.unsplash.com/photo-1645632698932-463c91daea4a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-                  alt=""
-                  className="rounded-full object-cover w-full h-full"
-                />
-              </div>
-            </div>
-          </li>
-          <li className="px-3 ">
-            <div className="flex flex-col justify-center items-center">
-              <div className="h-10 w-10">
-                <img
-                  src="https://images.unsplash.com/photo-1645522165850-a8b468936735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
-                  alt=""
-                  className="rounded-full object-cover w-full h-full"
-                />
-              </div>
-            </div>
-          </li>
+            )
+          }) : ""}
         </ul>
       </div>
       {/* Content redering */}

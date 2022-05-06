@@ -1,22 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DifficultApi from "../../../../../apis/difficultApi";
 import useStore from "../../../../../store/useStore";
 
 function UpdateModal(props) {
-  const updateDifficult = useStore(state=> state.updateDifficults)
+  const updateDifficult = useStore(state=> state.updateDifficult)
   const { show, difficult, handleStatus } = props;
   const [error, setError] = useState("")
-  let temp = difficult != null ? difficult.name : ""
-  const [name, setName] = useState(temp)
+  const [name, setName] = useState()
 
-  const handleCreate = ()=>{
+useEffect(() => {
+  if(difficult){
+    setName(difficult.name)
+  }
+}, [difficult])
+
+
+  const handleUpdate = ()=>{
     if(name.trim().length < 3){
       setError("Please enter more than 3 characters")
       return;
     }else{
-      DifficultApi.updateDifficult({name})
+      DifficultApi.updateDifficult(difficult._id,name)
       .then(data=>{
-        updateDifficult(data.difficult)
+        console.log(data)
+        updateDifficult(difficult._id,data.difficult)
         setName("")
         setError("")
         handleStatus(false)
@@ -42,7 +49,7 @@ function UpdateModal(props) {
       <p className="text-red-500">{error}</p>
       </label>
      <div className="flex gap-x-5 justify-center">
-     <button onClick={handleCreate} className="px-4 py-2 rounded-lg text-white bg-primary">Update</button>
+     <button onClick={handleUpdate} className="px-4 py-2 rounded-lg text-white bg-primary">Update</button>
      <button onClick={()=>{handleStatus(false)}} className="px-4 py-2 rounded-lg text-white bg-red-500">Cancel</button>
      </div>
   </div>

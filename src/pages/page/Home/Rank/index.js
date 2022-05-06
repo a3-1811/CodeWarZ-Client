@@ -76,7 +76,7 @@ function Rank() {
         Leaderboard
       </h2>
       <div className="content flex justify-center items-center flex-col">
-        <div className="option flex justify-center items-center gap-x-10">
+        <div className="md:w-full md:gap-x-1 option flex justify-center items-center gap-x-10">
           {option.map((item)=>{
             return (<span key={item.name} onClick={()=>{handleChangeOption(item.key)}} className={`text-white bg-gray-500 bg-opacity-30 px-2 py-1 rounded-2xl cursor-pointer  hover:bg-white hover:bg-opacity-20 ${item.key === keyActive ? "tabActive" : ""}`}>
             {item.name}
@@ -132,228 +132,33 @@ function Rank() {
           </div>
         </div>
         <div className="other mt-5 w-full flex justify-center  gap-x-10  flex-wrap gap-y-5 overflow-y-scroll h-1/2 sm:h-80">
-        <div className="flex justify-between items-center gap-x-3 ">
+        {
+          users.map((user,index)=>{
+            if(index > 2){
+              return (
+                <div key={index} className="flex justify-between items-center gap-x-3 ">
             <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
+              <span className="text-white font-bold">{index+1}</span>
               <i className="mb-1 text-green fa fa-sort-up"></i>
             </div>
             <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
               <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
                 <img
                   className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
+                  src={user.info.avatar}
+                  alt={user.info.fullName}
                 />
               </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
+              <span className="mx-5 text-white font-bold">{user.info.fullName}</span>
+              <span className="text-green font-bold">{user.stats[keyActive]}</span>
             </div>
           </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-x-3 ">
-            <div className="rank flex justify-center items-center flex-col">
-              <span className="text-white font-bold">1</span>
-              <i className="mb-1 text-green fa fa-sort-up"></i>
-            </div>
-            <div className="info flex pr-5 justify-between pl-10 items-center relative h-10 rounded-3xl bg-gray-500 bg-opacity-50">
-              <div className="imageBox mb-3 h-10 w-10 rounded-full absolute top-0 left-0">
-                <img
-                  className="rounded-full h-full w-full"
-                  src="https://media.baamboozle.com/uploads/images/551156/1636687300_25508.jpeg"
-                  alt=""
-                />
-              </div>
-              <span className="mx-5 text-white font-bold">Abe333</span>
-              <span className="text-green font-bold">9020</span>
-            </div>
-          </div>
-
+              )
+            }
+            return ""
+          })
+        }
+          
         </div>
         </> : ""}
       </div>

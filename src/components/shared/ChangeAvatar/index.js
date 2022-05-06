@@ -59,7 +59,7 @@ export default function ChangeAvatarModal(props) {
 
           UserApi.updateAvatar(data)
           .then(()=>{
-            setNotice({...notice,status: true,message: "Change new avatar success!"})
+            setNotice({...notice,status: true,typeNotice:true,message: "Change new avatar success!"})
             setTimeout(()=>{
               history('/')
             },2000)
