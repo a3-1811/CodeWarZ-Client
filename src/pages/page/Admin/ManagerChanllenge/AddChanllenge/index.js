@@ -391,6 +391,7 @@ function AddChanllenge() {
                   <option value={"array"}>Array</option>
                   <option value={"number"}>Number</option>
                   <option value={"object"}>Object</option>
+                  <option value={"boolean"}>Boolean</option>
                 </select>
                 <p className="message text-red-600 font-semibold mt-1">
                   {errors[`typeOutput`]?.message}
