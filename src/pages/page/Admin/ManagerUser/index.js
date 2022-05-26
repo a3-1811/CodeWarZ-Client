@@ -139,7 +139,7 @@ function ManagerUsers() {
       setTable({...table,data : data})
   }
   return (
-    <div className="manager-difficult content pl-[24px] pt-[29px] pr-[100px] relative">
+    <div className="manager-difficult content pl-[24px] pt-[29px] pr-[100px] lg:pr-[24px] max-h-screen overflow-y-scroll relative">
       <div className="path text-gray-600 font-bold text-lg mb-11">
       Users manager &gt;{" "}
         <span className="text-primary font-bold">List Users</span>
@@ -155,7 +155,7 @@ function ManagerUsers() {
           />
         </div>
       </div>
-      <div className="relative">
+      <div className="relative flex lg:flex-col">
       <Table
         className="mt-4"
         columns={columns}
@@ -164,7 +164,7 @@ function ManagerUsers() {
         loading={table.loading}
       />
       {/* Add button */}
-      <div onClick={handleAddUpdate} className="absolute -right-28 top-0 flex flex-col h-[94px] w-24 justify-center items-center text-center bg-primary bg-opacity-20 text-primary font-bold cursor-pointer hover:text-primary p-3"><i className="fa fa-plus-square text-xl"></i><span className="text-sm">Create Admin</span></div>
+      <div onClick={handleAddUpdate} className="lg:relative lg:w-full lg:top-auto lg:right-auto absolute -right-28 top-0 flex flex-col h-[94px] w-24 justify-center items-center text-center bg-primary bg-opacity-20 text-primary font-bold cursor-pointer hover:text-primary p-3"><i className="fa fa-plus-square text-xl"></i><span className="text-sm">Create Admin</span></div>
       </div>
       <AddModal show={addModal.show} handleStatus={handleStatusAdd} handleReset={handleReset}/>
     </div>

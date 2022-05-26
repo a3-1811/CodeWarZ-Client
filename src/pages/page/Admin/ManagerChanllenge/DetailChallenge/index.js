@@ -30,7 +30,7 @@ function DetailChallenge() {
   }, []);
 
   return (
-    <div className="w-full content pl-[24px] pt-[29px] pr-[100px] relative">
+    <div className="w-full content pl-[24px] pt-[29px] pr-[24px] relative max-h-screen overflow-y-scroll">
       <div className="path text-gray-600 font-bold text-lg mb-11">
         Chanlenge manager &gt;{" "}
         <span className="text-primary font-bold">Detail chanllenge</span>
@@ -41,7 +41,7 @@ function DetailChallenge() {
       <div className="relative w-full h-[70vh]">
         {chanllenge && (
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-          <Col span={12}>
+          <Col span={12} xs={24} sm={24} lg={12} md={24}>
             <div className='flex items-center mb-4'>
               <span className='mr-[52px] font-semibold text-base leading-6 text-primary-gray-500'>
                 Name:
@@ -51,7 +51,7 @@ function DetailChallenge() {
               </p>
             </div>
           </Col>
-          <Col span={12}>
+          <Col span={12} xs={24} sm={24} lg={12} md={24}>
             <div className='flex items-center mb-4'>
               <span className='mr-[70px] font-semibold text-base leading-6 text-primary-gray-500'>
                 Difficult:
@@ -61,7 +61,7 @@ function DetailChallenge() {
               </p>
             </div>
           </Col>
-          <Col span={12}>
+          <Col span={12} xs={24} sm={24} lg={12} md={24}>
             <div className='flex items-center mb-4'>
               <span className='mr-12 font-semibold text-base leading-6 text-primary-gray-500'>
                 Hint:
@@ -71,7 +71,7 @@ function DetailChallenge() {
               </p>
             </div>
           </Col>
-          <Col span={12}>
+          <Col span={12} xs={24} sm={24} lg={12} md={24}>
             <div className='flex items-center mb-4'>
               <span className='mr-12 font-semibold text-base leading-6 text-primary-gray-500'>
                 Descriptions:
@@ -81,7 +81,7 @@ function DetailChallenge() {
               </p>
             </div>
           </Col>
-          <Col span={12}>
+          <Col span={12} xs={24} sm={24} lg={12} md={24}>
             <div className='flex items-center mb-4'>
               <span className='mr-[60px] font-semibold text-base leading-6 text-primary-gray-500'>
                 Languages support
@@ -93,7 +93,7 @@ function DetailChallenge() {
               </p>
             </div>
           </Col>
-          <Col span={12}>
+          <Col span={12}  xs={24} sm={24} lg={12} md={24}>
             <div className='flex items-center mb-4'>
               <span className='mr-[88px] font-semibold text-base leading-6 text-primary-gray-500'>
                 Testcases
@@ -129,8 +129,10 @@ function DetailChallenge() {
                 Type of inputs
               </span>
               <p className='font-normal text-base leading-6 text-primary-gray-400 mt-2'>
-              {chanllenge.typeInput.map(item=>{
-                return <span key={item}>{item}</span>
+              {chanllenge.typeInput.map((item,index)=>{
+                return chanllenge.typeInput.length === 1 ? <span key={item}>{item}</span> : (
+                  index === chanllenge.typeInput.length -1 ? <span key={item}>{item}</span> : <span key={item}>{item}, </span>
+                )
               })}
               </p>
             </div>

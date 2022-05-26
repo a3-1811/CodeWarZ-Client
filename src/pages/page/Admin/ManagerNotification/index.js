@@ -110,7 +110,7 @@ function ManagerNotification() {
       setTable({...table,data : data})
   }
   return (
-    <div className="manager-difficult content pl-[24px] pt-[29px] pr-[100px] relative">
+    <div className="manager-difficult content pl-[24px] pt-[29px] pr-[100px] lg:pr-[24px] max-h-screen overflow-y-scroll relative">
       <div className="path text-gray-600 font-bold text-lg mb-11">
       Notifications manager &gt;{" "}
         <span className="text-primary font-bold">List Notifications</span>
@@ -135,7 +135,7 @@ function ManagerNotification() {
         loading={table.loading}
       />
       {/* Add button */}
-      <div onClick={handleAddUpdate} to="/manager-difficult/add" className="absolute -right-28 top-0 flex flex-col h-[94px] w-24 justify-center items-center text-center bg-primary bg-opacity-20 text-primary font-bold cursor-pointer hover:text-primary p-3"><i className="fa fa-plus-square text-xl"></i><span className="text-sm">Create Notification</span></div>
+      <div onClick={handleAddUpdate} to="/manager-difficult/add" className="lg:relative lg:w-full lg:top-auto lg:right-auto  absolute -right-28 top-0 flex flex-col h-[94px] w-24 justify-center items-center text-center bg-primary bg-opacity-20 text-primary font-bold cursor-pointer hover:text-primary p-3"><i className="fa fa-plus-square text-xl"></i><span className="text-sm">Create Notification</span></div>
       </div>
       <AddModal show={addModal.show} handleStatus={handleStatusAdd} handleReset={handleReset}/>
     </div>

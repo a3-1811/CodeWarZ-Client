@@ -269,7 +269,7 @@ function UpdateChanllenge() {
     });
   };
   return (
-    <div className="w-full content pl-[24px] pt-[29px] pr-[100px] relative">
+    <div className="w-full content pl-[24px] pt-[29px] pr-[24px] relative">
       <div className="path text-gray-600 font-bold text-lg mb-11">
         Chanlenge manager &gt;{" "}
         <span className="text-primary font-bold">Update chanllenge</span>

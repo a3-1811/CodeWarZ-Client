@@ -122,7 +122,7 @@ function ManagerChanllenge() {
     }, 700);
   }
   return (
-    <div className="manager-chanllenge content pl-[24px] pt-[29px] pr-[100px] relative">
+    <div className="manager-chanllenge content pl-[24px] pt-[29px] pr-[100px] relative lg:pr-[24px] max-h-screen overflow-y-scroll">
       <div className="path text-gray-600 font-bold text-lg mb-11">
       Chanlenge manager &gt;{" "}
         <span className="text-primary font-bold">List challenge</span>
@@ -136,7 +136,7 @@ function ManagerChanllenge() {
             <Select
             onChange={handleChangeDifficult}
             defaultValue={"All"}
-            className="w-[200px]"
+            className="w-[200px] px-2 py-3"
           >
             <Option value="all">All</Option>
             {difficults.map((diff)=><Option key={diff._id} value={diff._id}>{diff.name}</Option>)}
@@ -153,7 +153,7 @@ function ManagerChanllenge() {
           />
         </div>
       </div>
-      <div className="relative">
+      <div className="relative lg:flex lg:flex-col">
       <Table
         className="mt-4"
         columns={columns}
@@ -162,7 +162,7 @@ function ManagerChanllenge() {
         loading={table.loading}
       />
       {/* Add button */}
-      <Link to="/manager-chanllenge/add" className="absolute -right-28 top-0 flex flex-col h-[94px] w-24 justify-center items-center text-center bg-primary bg-opacity-20 text-primary font-bold cursor-pointer hover:text-primary p-3"><i className="fa fa-plus-square text-xl"></i><span className="text-sm">Create chanllenge</span></Link>
+      <Link to="/manager-chanllenge/add" className="lg:relative lg:w-full lg:top-auto lg:right-auto absolute -right-28 top-0 flex flex-col h-[94px] w-24 justify-center items-center text-center bg-primary bg-opacity-20 text-primary font-bold cursor-pointer hover:text-primary p-3"><i className="fa fa-plus-square text-xl"></i><span className="text-sm">Create chanllenge</span></Link>
       </div>
       
     </div>
