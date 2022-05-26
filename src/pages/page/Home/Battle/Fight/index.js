@@ -30,6 +30,7 @@ function Fight(props) {
     show: false,
     result: null,
   });
+  const [otherPlayerSubmited, setotherPlayerSubmited] = useState(false)
   const timerRef = useRef("")
   const [alert, setalert] = useState({
     message : "", color : "red", show :false
@@ -66,6 +67,7 @@ useEffect(() => {
       setalert({...alert,message: "Submited completed. Wait a minute for other player.",color: "green",show: true})
     }else{
       setalert({...alert,message: `${playerSubmit.fullName } have submited. Hurry up!`,color: "red",show: true})
+      setotherPlayerSubmited(true)
       timerRef.current = setTimeout(() => {
         socket.emit("SUBMITED_LATE",{room,code})
       }, 5000);
@@ -167,8 +169,11 @@ useEffect(() => {
               chanllengeId: chanllenge._id,
             });
             //Send result
-            socket.emit("SUBMIT_BATTLE",{battle,code})
-
+            if(otherPlayerSubmited){
+              socket.emit("SUBMITED_LATE",{room,code})
+            }else{
+              socket.emit("SUBMIT_BATTLE",{battle,code})
+            }
           }
         }
       })
